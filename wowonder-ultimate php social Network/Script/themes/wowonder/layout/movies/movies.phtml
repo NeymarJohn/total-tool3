@@ -1,0 +1,61 @@
+<div class="page-margin">
+	<div class="wow_main_float_head moviez">
+		<div class="container">
+			<h1><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M18,9H16V7H18M18,13H16V11H18M18,17H16V15H18M8,9H6V7H8M8,13H6V11H8M8,17H6V15H8M18,3V5H16V3H8V5H6V3H4V21H6V19H8V21H16V19H18V21H20V3H18Z"></path></svg> <?php echo $wo['lang']['movies']; ?></h1>
+			<div class="movies-search">
+				<div class="wow_form_fields">
+					<input type="text" placeholder="<?php echo $wo['lang']['search']; ?>" id="search-movies">
+					<ul class="search-result" id="search-movies-result"></ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="wow_main_blogs_bg"></div>
+	
+	<div class="page-margin wow_content">
+		<div class="wo_page_hdng pag_neg_padd pag_alone">
+			<div class="wo_page_hdng_menu">
+				<ul class="list-unstyled movies-top-breadcrumb">
+					<li class="movies-subheadnav" data-movies="rec"><a><?php echo $wo['lang']['recommended']; ?></a></li>
+					<li class="movies-subheadnav" data-movies="new"><a><?php echo $wo['lang']['new']; ?></a></li>
+					<li class="movies-subheadnav" data-movies="mtw"><a><?php echo $wo['lang']['most_watched']; ?></a></li>
+				</ul>
+				<div class="dropdown wow_movie_filter">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M6,13H18V11H6M3,6V8H21V6M10,18H14V16H10V18Z"></path></svg></a>
+				<ul class="dropdown-menu dropdown-menu-right wow_movie_filters" role="menu">
+					<?php echo Wo_LoadPage("movies/includes/header"); ?>
+				</ul>
+			</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="movies">
+		<div class="movies-inner">
+			<?php if (count($wo['movies']) > 0): ?>
+				<?php foreach ($wo['movies'] as $wo['film']): ?>
+					<?php echo Wo_LoadPage("movies/includes/films-list"); ?>
+				<?php endforeach ?>
+			<?php else: ?>
+				<?php echo '<div class="empty_state"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M18,9H16V7H18M18,13H16V11H18M18,17H16V15H18M8,9H6V7H8M8,13H6V11H8M8,17H6V15H8M18,3V5H16V3H8V5H6V3H4V21H6V19H8V21H16V19H18V21H20V3H18Z" /></svg>'. $wo['lang']['no_movies_found'] .' </div>';?>
+			<?php endif; ?>
+		</div>
+		<div class="posts_load">
+			<?php if (count($wo['movies']) >= 26): ?>
+				<div class="load-more">
+					<button class="btn btn-default text-center pointer load-more-movies" data-movies-type="all"><i class="fa fa-arrow-down progress-icon" data-icon="arrow-down"></i> <?php echo $wo['lang']['load_more'] ?></button>
+				</div>
+			<?php endif ?>
+		</div>
+	</div>
+	<?php echo Wo_LoadPage("movies/includes/footer"); ?>
+</div>
+
+<script>
+$('.wow_main_blogs_bg').css('height', ($('.wow_main_float_head').height()) + 'px');
+
+$(document).on('click', '.wow_movie_filters', function (e) {
+  e.stopPropagation();
+});
+</script>

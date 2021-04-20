@@ -1,0 +1,5 @@
+1. Database default value issue fixed [FIX]
+2. All categories page added on menu [UPDATE]
+3. Multi category support added [NEW]
+4. Blog page design updated [UPDATE]
+5. Content copy protection [NEW]

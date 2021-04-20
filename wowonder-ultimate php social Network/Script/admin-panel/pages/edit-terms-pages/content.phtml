@@ -1,0 +1,168 @@
+<script src="<?php echo $wo['config']['theme_url'];?>/javascript/tinymce/js/tinymce/tinymce.min.js"></script>
+<?php $wo['terms'] = Wo_GetTerms(); ?>
+<div class="container-fluid">
+    <div>
+        <h3>Edit Terms Pages</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Pages</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Terms Pages</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-8 col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Edit Term Pages</h6>
+                    <div class="add-settings-alert"></div>
+                    <form class="add-settings" method="POST">
+                         <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Terms of Use (HTML Allowed)</label>
+                                <textarea name="terms_of_use" id="terms_of_use" class="form-control" cols="30" rows="10"><?php echo $wo['terms']['terms_of_use'];?></textarea>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Privacy Policy (HTML Allowed)</label>
+                                <textarea name="privacy_policy" id="privacy_policy" class="form-control" cols="30" rows="10"><?php echo $wo['terms']['privacy_policy'];?></textarea>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">About (HTML Allowed)</label>
+                                <textarea name="about" id="about" class="form-control" cols="30" rows="10"><?php echo $wo['terms']['about'];?></textarea>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Refund (HTML Allowed)</label>
+                                <textarea name="refund" id="refund" class="form-control" cols="30" rows="10"><?php echo $wo['terms']['refund'];?></textarea>
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+
+$(function() {
+    var form_add_settings = $('form.add-settings');
+    form_add_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_terms_setting',
+        beforeSend: function() {
+            form_add_settings.find('.waves-effect').text('Please wait..');
+        },
+        beforeSubmit : function(arr, $form, options){
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i].name == "terms_of_use") {
+                    arr[i].value = btoa(unescape(encodeURIComponent($('#terms_of_use').value=tinymce.editors[$('#terms_of_use').attr('id')].getContent())));
+                }
+                if (arr[i].name == 'privacy_policy') {
+                    arr[i].value = btoa(unescape(encodeURIComponent($('#privacy_policy').value=tinymce.editors[$('#privacy_policy').attr('id')].getContent())));
+                }
+                if (arr[i].name == 'about') {
+                    arr[i].value = btoa(unescape(encodeURIComponent($('#about').value=tinymce.editors[$('#about').attr('id')].getContent())));
+                }
+                if (arr[i].name == 'refund') {
+                    arr[i].value = btoa(unescape(encodeURIComponent($('#refund').value=tinymce.editors[$('#refund').attr('id')].getContent())));
+                }
+            }
+          // delete arr[0];
+          // delete arr[1];
+          // delete arr[2];
+          // arr.push({name:'terms_of_use', value:btoa(unescape(encodeURIComponent($('#terms_of_use').val())))}); 
+          // arr.push({name:'privacy_policy', value:btoa(unescape(encodeURIComponent($('#privacy_policy').val())))});
+          // arr.push({name:'about', value:btoa(unescape(encodeURIComponent($('#about').val())))});
+          // arr.push({name:'refund', value:btoa(unescape(encodeURIComponent($('#refund').val())))});
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.add-settings-alert').html('<div class="alert alert-success"><i class="fa fa-check"></i> Pages saved successfully</div>');
+            } else if (data.status == 400) {
+	          $('.add-settings-alert').html('<div class="alert alert-danger">'+data.message+'</div>');
+                setTimeout(function () {
+                    $('.add-settings-alert').empty();
+                }, 2000);
+	        }
+	        form_add_settings.find('.waves-effect').text('Save');
+        }
+    });
+	tinymce.init({
+		  selector: '#terms_of_use',
+		  height: 270,
+		  entity_encoding : "raw",
+		  paste_data_images: true,
+		  image_advtab: true,
+		  toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+		  toolbar2: "print preview media | forecolor backcolor",
+		  plugins: [
+			  "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+			  "searchreplace wordcount visualblocks visualchars code fullscreen",
+			  "insertdatetime media nonbreaking save table contextmenu directionality",
+			  "template paste textcolor colorpicker textpattern"
+			],
+	});
+	tinymce.init({
+		  selector: '#privacy_policy',
+		  height: 270,
+		  entity_encoding : "raw",
+		  paste_data_images: true,
+		  image_advtab: true,
+		  toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+		  toolbar2: "print preview media | forecolor backcolor",
+		  plugins: [
+			  "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+			  "searchreplace wordcount visualblocks visualchars code fullscreen",
+			  "insertdatetime media nonbreaking save table contextmenu directionality",
+			  "template paste textcolor colorpicker textpattern"
+			],
+	});
+	tinymce.init({
+		  selector: '#about',
+		  height: 270,
+		  entity_encoding : "raw",
+		  paste_data_images: true,
+		  image_advtab: true,
+		  toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+		  toolbar2: "print preview media | forecolor backcolor",
+		  plugins: [
+			  "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+			  "searchreplace wordcount visualblocks visualchars code fullscreen",
+			  "insertdatetime media nonbreaking save table contextmenu directionality",
+			  "template paste textcolor colorpicker textpattern"
+			],
+	});
+	tinymce.init({
+		  selector: '#refund',
+		  height: 270,
+		  entity_encoding : "raw",
+		  paste_data_images: true,
+		  image_advtab: true,
+		  toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+		  toolbar2: "print preview media | forecolor backcolor",
+		  plugins: [
+			  "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+			  "searchreplace wordcount visualblocks visualchars code fullscreen",
+			  "insertdatetime media nonbreaking save table contextmenu directionality",
+			  "template paste textcolor colorpicker textpattern"
+			],
+	});
+});
+</script>

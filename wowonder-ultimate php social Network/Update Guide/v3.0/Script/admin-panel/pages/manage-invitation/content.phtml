@@ -1,0 +1,63 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Manage Features > Users Invitation</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Manage Users Invitation</h2> 
+                     <br>
+                     <div>This system is used to invite users to your site if the registration system is turned off.</div>
+                </div>
+                
+                <div class="body">
+                   <div class="table-responsive1">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                   <th>Created</th>
+					               <th>Invitation Code</th>
+					               <th>Invited User</th>
+					               <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="manage-invitation-list">
+                                <?php 
+				                foreach (Wo_GetAllInvitaionCodes() as $wo['invitation']) {
+				                    echo Wo_LoadAdminPage('manage-invitation/list');
+				                }
+				                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+jQuery(document).ready(function($) {
+
+      $(document).on('click', '.delete-admin-invitation', function(event) {
+         var id = $(this).attr('id');
+         $("tr[data-invitation='"+id+"']").remove();
+         $.ajax({
+            url:  Wo_Ajax_Requests_File(),
+            type: 'GET',
+            dataType: 'json',
+            data: {f: 'admincp',s:'rm-user-invitation',id:id},
+         })
+         .done(function(data) {
+            if (data.status == 200) {
+               
+            }
+         })
+         .fail(function() {
+            console.log("error");
+         })
+      });
+   });
+</script>

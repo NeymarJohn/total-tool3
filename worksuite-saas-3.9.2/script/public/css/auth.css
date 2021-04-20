@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;;
+    font-size: 13px;
+}
+#form-section {
+    background: #ffffff;
+    height: 100vh;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#background-section {
+    /*background: url(../img/login-bg.jpg) center center/cover no-repeat!important;*/
+    height: 100vh;
+}
+
+#auth-form {
+    max-width: 80%;
+    margin: 10% auto;
+}
+
+#auth-logo {
+    padding: 10% 11%;
+    background: #171e28;
+}
+
+.form-material .form-control.focus, .form-material .form-control:focus {
+    background-size: 100% 2px,100% 1px;
+    outline: 0;
+    transition-duration: .3s;
+}
+
+
+
+.form-horizontal .form-group {
+    margin-left: -7.5px;
+    margin-right: -7.5px;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.form-material .form-control {
+    background-color: rgba(0,0,0,0);
+    background-position: center bottom,center calc(99%);
+    background-repeat: no-repeat;
+    background-size: 0 2px,100% 1px;
+    padding: 0;
+    transition: background 0s ease-out 0s;
+}
+
+.form-material .form-control, .form-material .form-control.focus, .form-material .form-control:focus {
+    background-image: linear-gradient(#000000,#a4a3a5),linear-gradient(rgba(120,130,140,.13),rgba(120,130,140,.13));
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    float: none;
+}
+
+#checkbox-signup {
+    margin-left: 3px;
+    margin-top: 1px;
+}
+
+.checkbox label {
+    min-height: 20px;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.checkbox label::before {
+    -o-transition: .3s ease-in-out;
+    -webkit-transition: .3s ease-in-out;
+    background-color: #fff;
+    border-radius: 1px;
+    border: 1px solid rgba(120,130,140,.13);
+    content: "";
+    display: inline-block;
+    height: 17px;
+    left: 0;
+    position: absolute;
+    transition: .3s ease-in-out;
+    width: 17px;
+    outline: 0!important;
+}
+.checkbox label::after {
+    color: #2b2b2b;
+    display: inline-block;
+    font-size: 11px;
+    height: 16px;
+    left: 0;
+    padding-left: 3px;
+    padding-top: 1px;
+    position: absolute;
+    /* top: 7px; */
+    width: 16px;
+}
+
+
+.checkbox input[type=checkbox]:checked+label::after {
+    content: "\f00c";
+    font-family: FontAwesome;
+}
+
+.btn-info, .btn-info.disabled {
+    background: #03a9f3;
+    border: 1px solid #03a9f3;
+}
+
+.text-dark {
+    color: #171e28;
+}
+
+.form-horizontal .checkbox {
+    padding-top: 0;
+}
+.mb-16{
+    margin-bottom: 16px;
+}
+.btn-facebook{
+    background: #3B5998 !important;
+    color: white !important;
+    border-color: #3B5998 !important;
+}
+.btn-facebook:active:hover{
+    border-color: #3B5998 !important;
+}
+.btn-google{
+    background: #dd4b39 !important;
+    color: white !important;
+    border-color: #dd4b39 !important;
+}
+.btn-google:active:hover{
+    border-color: #dd4b39 !important;
+}
+.btn-twitter{
+    background: #55ACEE !important;
+    color: white !important;
+    border-color: #55ACEE !important;
+}
+.btn-twitter:active:hover{
+    border-color: #55ACEE !important;
+}
+.btn-linkedin{
+    background: #007bb5 !important;
+    color: white !important;
+    border-color: #007bb5 !important;
+}
+.btn-twitter:active:hover{
+    border-color: #007bb5 !important;
+}
+
+#register-auth-form {
+    max-width: 75%;
+    margin: 30px auto;
+}
+
+#register-auth-form .form-control{
+    height: 50px;
+    padding: 6px 12px;
+}
+
+#register-auth-form #save-form{
+    height: 50px;
+    border-radius: 4px;
+}
+
+#register-auth-form label{
+    font-weight: 500;
+}
+
+#register-auth-logo {
+    padding: 5% 11%;
+}
+
+.login-url {
+    color: #03a9f3;
+    padding: 6px 0px;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    #auth-logo {
+        text-align: center;
+    }
+}

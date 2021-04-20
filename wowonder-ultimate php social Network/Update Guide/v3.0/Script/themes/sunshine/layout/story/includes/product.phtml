@@ -1,0 +1,78 @@
+<?php 
+if (!empty($wo['story']['product_id'])) {
+$class = '';
+   $small = '';
+   $singleimg = '';
+   if (count($wo['story']['product']['images']) == 1) {
+     $singleimg = 'wo_single_proimg';
+   }
+   if (count($wo['story']['product']['images']) == 2) {
+     $class = 'width-2';
+   }
+   if (count($wo['story']['product']['images']) > 1) {
+     $small = '_small';
+   }
+   if (count($wo['story']['product']['images']) > 2) {
+     $class = 'width-3';
+   }
+   if (count($wo['story']['product']['images']) > 3) {
+     foreach (array_slice($wo['story']['product']['images'],0,3) as $key => $photo) {
+       if ($key == 2) {
+         echo "<div onclick='Wo_OpenAlbumLightBox(" . $photo['id'] . ", \"product\");' class='album-collapse pointer'> 
+         <img src='".($photo['image_org'])."' class='image-file'>
+         <span>+".count(array_slice($wo['story']['product']['images'],2))."</span>
+         </div>
+         "; 
+       }
+       else{
+         echo  "<img src='" . ($photo['image_org']) ."' alt='image' class='" . $class . " image-file pointer' 
+         onclick='Wo_OpenAlbumLightBox(" . $photo['id'] . ", \"product\");'>";
+       }
+     }
+     foreach (array_slice($wo['story']['product']['images'],3) as $photo) {
+       echo  "<img src='" . ($photo['image_org']) ."' alt='image' class='" . $class . " image-file pointer hidden' 
+       onclick='Wo_OpenAlbumLightBox(" . $photo['id'] . ", \"product\");'>";
+     }
+   }
+   else{
+     foreach ($wo['story']['product']['images'] as $photo) {
+       echo  "<img src='" . ($photo['image_org']) ."' alt='image' class='" . $class . " " . $singleimg . " image-file pointer' 
+       onclick='Wo_OpenAlbumLightBox(" . $photo['id'] . ", \"product\");'>";
+     }
+   }
+   echo '<br><br>';
+   $symbol =  (!empty($wo['currencies'][$wo['story']['product']['currency']]['symbol'])) ? $wo['currencies'][$wo['story']['product']['currency']]['symbol'] : $wo['config']['classified_currency_s'];
+   $text =  (!empty($wo['currencies'][$wo['story']['product']['currency']]['text'])) ? $wo['currencies'][$wo['story']['product']['currency']]['text'] : $wo['config']['classified_currency'];
+   $status = ($wo['story']['product']['status'] == 0) ? '<span class="product-description">' . $wo['lang']['in_stock'] . '</span>' : '<span class="product-status-sold">' . $wo['lang']['sold'] . '</span><br><br>';
+   $type = ($wo['story']['product']['type'] == 0) ? '<span class="product-description">' . $wo['lang']['new'] . '</span>' : '<span class="product-description">' . $wo['lang']['used'] . '</span><br>';
+   echo '<div class="product-name"><h4 class="product-description">' . $wo['story']['product']['name'] . '</h4></div>';
+   $fields = Wo_GetCustomFields('product'); 
+    if (!empty($fields)) {
+      foreach ($fields as $key => $wo['field']) { 
+        if (!empty($wo['story']['product']['fid_'.$wo['field']['id']])) {
+          if ($wo['field']['type'] == 'selectbox') {
+            $options = @explode(',', $wo['field']['options']);
+            foreach ($options as $key => $value) {
+              if (($key + 1) == $wo['story']['product']['fid_'.$wo['field']['id']]) {
+                $wo['story']['product']['fid_'.$wo['field']['id']] = $value;
+              }
+            }
+          }
+          echo '<div class="product-name"><h4 class="product-description">' . $wo['story']['product']['fid_'.$wo['field']['id']] . '</h4></div>';
+        } 
+      } 
+    } 
+   
+   if (!empty($wo['story']['product']['location'])) {
+     echo '<div class="product-name"><span class="product_row_title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span> <span class="product-description"> ' . $wo['story']['product']['location'] . '</span></div><br>';
+   }
+   echo '<div class="product-name"><p class="product-description product-description-'.$wo['story']['product']['id'].'">' . $wo['story']['product']['description'] . '</p></div><br>';
+   echo '<div class="wo_product_row"><div class="product-name"><span class="product_row_title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag" color="#2196F3"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>' . $wo['lang']['type'] . '</span> ' . $type . '</div>';
+   echo '<div class="product-name"><span class="product_row_title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card" color="#349238"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>' . $wo['lang']['price'] . '</span> <span class="product-description" style="max-height: none;">' . $symbol . $wo['story']['product']['price'] . ' (' . $text . ')</span></div>';
+   echo '<div class="product-name"><span class="product_row_title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package" color="#9C27B0"><path d="M12.89 1.45l8 4A2 2 0 0 1 22 7.24v9.53a2 2 0 0 1-1.11 1.79l-8 4a2 2 0 0 1-1.79 0l-8-4a2 2 0 0 1-1.1-1.8V7.24a2 2 0 0 1 1.11-1.79l8-4a2 2 0 0 1 1.78 0z"></path><polyline points="2.32 6.16 12 11 21.68 6.16"></polyline><line x1="12" y1="22.76" x2="12" y2="11"></line><line x1="7" y1="3.5" x2="17" y2="8.5"></line></svg>' . $wo['lang']['status'] . '</span> ' . $status . '</div></div>'; 
+   if ($wo['loggedin']) { if ($wo['page']  == 'story' && $wo['story']['product']['user_id'] != $wo['user']['user_id']) { ?>
+    <br>
+        <button class="contact btn btn-success btn-mat" onclick="Wo_OpenChatTab(<?php echo $wo['story']['product']['user_id']?>,0,<?php echo $wo['story']['product']['id']?>)"><?php echo $wo['lang']['contact_seller'] ?></button> 
+      <?php }}
+}
+   ?>

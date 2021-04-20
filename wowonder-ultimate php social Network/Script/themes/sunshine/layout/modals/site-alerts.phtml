@@ -1,0 +1,231 @@
+<div class="modal fade in" id="comment_report_box" role="dialog">
+    <div class="modal-dialog">
+    
+      <div class="modal-content">
+        <p style="text-align: center;padding: 30px 20px;font-family: Hind,Arial;font-size: 16px;">
+          <i class="fa fa-check" aria-hidden="true" style="color: green;"></i>      
+          <span class="msg"><?php echo $wo['lang']['comment_reported']; ?></span>
+        </p>
+      </div>
+      
+    </div>
+</div>
+
+<div class="modal fade in" id="post-shared" role="dialog">
+    <div class="modal-dialog">
+    
+      <div class="modal-content">
+        <p style="text-align: center;padding: 30px 20px;font-family: Hind,Arial;font-size: 16px;">
+          <i class="fa fa-check" aria-hidden="true" style="color: green;"></i>      
+          <?php echo $wo['lang']['post_shared']; ?>
+        </p>
+      </div>
+      
+    </div>
+</div>
+<div class="modal fade in" id="modal-alert" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <p style="text-align: center;padding: 30px 20px;font-family: Hind,Arial;font-size: 16px;">
+          <i class="fa fa-info-circle" aria-hidden="true" style="color: #31708f;"></i>      
+          <span id="modal-alert-msg">
+            <?php 
+              $limit = $wo['config']['connectivitySystemLimit'];
+              $text  = preg_replace("/\{\{CNTC_LIMIT\}\}/", $limit, $wo['lang']['cntc_limit_reached']);
+              echo $text;
+            ?>
+          </span>
+        </p>
+      </div>
+    </div>
+</div>
+<div class="modal fade in" id="invalid_file" role="dialog">
+    <div class="modal-dialog">
+    
+      <div class="modal-content">
+        <p style="text-align: center;padding: 30px 20px;font-family: Hind,Arial;font-size: 14px;">
+          <i class="fa fa-info-circle main" aria-hidden="true" style="color:#f2dede;"></i>      
+          <?php echo str_replace('{file_size}', Wo_SizeUnits($wo['config']['maxUpload']), $wo['lang']['file_too_big']); ?>
+        </p>
+      </div>
+      
+    </div>
+</div>
+<div class="modal fade in" id="file_not_supported" role="dialog">
+    <div class="modal-dialog">
+    
+      <div class="modal-content">
+        <p style="text-align: center;padding: 30px 20px;font-family: Hind,Arial;font-size: 14px;">
+          <i class="fa fa-info-circle main" aria-hidden="true" style="color:#f2dede;"></i>      
+          <?php echo $wo['lang']['file_not_supported']; ?>
+        </p>
+      </div>
+      
+    </div>
+</div>
+<div class="modal fade" id="modal_light_box" role="dialog">
+	<button type="button" class="close comm_mod_img_close" data-dismiss="modal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+  <div class="modal-dialog" >
+    <div class="modal-content">              
+      <div class="modal-body" style="padding: 0;">
+        <img  class="image" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade in" id="adult_image_file" role="dialog">
+    <div class="modal-dialog">
+    
+      <div class="modal-content">
+        <p style="text-align: center;padding: 30px 20px;font-family: Hind,Arial;font-size: 14px;">
+          <i class="fa fa-info-circle main" aria-hidden="true" style="color:#f2dede;"></i>      
+          <?php echo $wo['lang']['adult_image_file']; ?>
+        </p>
+      </div>
+      
+    </div>
+</div>
+
+
+<div class="modal fade sun_modal" id="views-info-modal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+				<h4 class="modal-title"><span id="views_info_title"></span></h4>
+			</div>
+			<div class="modal-body">
+				<div id="views_info" class="wo_react_ursrs_list"></div>
+				<div class="clearfix"></div>
+				<div id="views_info_load" style="display: none;">
+					<div class="load-more views_info_load_ wo_react_ursrs_list_lod_mor">
+						<button class="btn btn-default text-center views_info_load_more" data-type="" post-id="" table-type="" onclick="Wo_LoadViewsInfo(this);"><span id="load_more_info_btn"><?php echo $wo['lang']['load_more'] ?></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade sun_modal" id="users-reacted-modal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+				<h4 class="modal-title">
+					<div class="who_react_modal">
+            <?php foreach ($wo['reactions_types'] as $key => $value) { ?>
+              <span class="how_reacted like-btn-like pointer" id="_post333" onclick="Wo_LoadReactedUsers(<?php echo $value['id']; ?>);">
+                <div class="inline_post_emoji inline_act_emoji"><img src="<?php echo $value['sunshine_small_icon']; ?>"></div>
+              </span>
+            <?php } ?>
+						<!-- <span class="how_reacted like-btn-like pointer" id="_post333" onclick="Wo_LoadReactedUsers('like');">
+							<div class="inline_post_emoji inline_act_emoji"><img src="<?php echo $wo['config']['theme_url'];?>/reaction/like-sm.png"></div>
+						</span>
+						<span class="how_reacted like-btn-love pointer" id="_post333" onclick="Wo_LoadReactedUsers('love');">
+							<div class="inline_post_emoji inline_act_emoji"><img src="<?php echo $wo['config']['theme_url'];?>/reaction/love-sm.png"></div>
+						</span>
+						<span class="how_reacted like-btn-haha pointer" id="_post333" onclick="Wo_LoadReactedUsers('haha');">
+							<div class="inline_post_emoji inline_act_emoji"><img src="<?php echo $wo['config']['theme_url'];?>/reaction/haha-sm.png"></div>
+						</span>
+						<span class="how_reacted like-btn-wow pointer" id="_post333" onclick="Wo_LoadReactedUsers('wow');">
+							<div class="inline_post_emoji inline_act_emoji"><img src="<?php echo $wo['config']['theme_url'];?>/reaction/wow-sm.png"></div>
+						</span>
+						<span class="how_reacted like-btn-sad pointer" id="_post333" onclick="Wo_LoadReactedUsers('sad');">
+							<div class="inline_post_emoji inline_act_emoji"><img src="<?php echo $wo['config']['theme_url'];?>/reaction/sad-sm.png"></div>
+						</span>
+						<span class="how_reacted like-btn-angry pointer" id="_post333" onclick="Wo_LoadReactedUsers('angry');">
+							<div class="inline_post_emoji inline_act_emoji"><img src="<?php echo $wo['config']['theme_url'];?>/reaction/angry-sm.png"></div>
+						</span> -->
+					</div>
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div id="reacted_users_box" class="wo_react_ursrs_list"></div>
+				<div class="clearfix"></div>
+				<div id="reacted_users_load" style="display: none;">
+					<div class="load-more wo_react_ursrs_list_lod_mor">
+						<button class="btn btn-default text-center reacted_users_load_more" data-type="" post-id="" col-type="" onclick="Wo_LoadMoreReactedUsers(this);"><span id="load_more_reacted_btn"><?php echo $wo['lang']['load_more'] ?></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade in" id="approve_post" role="dialog">
+    <div class="modal-dialog">
+    
+      <div class="modal-content">
+        <p style="text-align: center;padding: 30px 20px;font-family: Hind,Arial;font-size: 14px;">
+          <i class="fa fa-info-circle main" aria-hidden="true" style="color:#f2dede;"></i>      
+          <?php echo $wo['lang']['approve_post_text']; ?>
+        </p>
+      </div>
+      
+    </div>
+</div>
+<div class="modal fade in" id="pro_upload_file" role="dialog">
+    <div class="modal-dialog">
+    
+      <div class="modal-content">
+        <p style="text-align: center;padding: 30px 20px;font-family: Hind,Arial;font-size: 14px;">
+          <i class="fa fa-info-circle main" aria-hidden="true" style="color:#f2dede;"></i>      
+          <?php echo $wo['lang']['free_plan_upload']; ?> <a href="<?php echo Wo_SeoLink('index.php?link1=go-pro'); ?>"><?php echo $wo['lang']['upgrade_to_pro']; ?></a>
+        </p>
+      </div>
+      
+    </div>
+</div>
+
+<div class="modal fade in" id="error_post" role="dialog">
+    <div class="modal-dialog">
+    
+      <div class="modal-content">
+        <p style="text-align: center;padding: 30px 20px;font-family: Hind,Arial;font-size: 14px;" id="error_post_text">
+        </p>
+      </div>
+      
+    </div>
+</div>
+
+<div class="modal fade sun_modal" id="edit-offer-modal" role="dialog">
+<div class="modal-dialog">
+      <div class="modal-content">
+            <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+                  <h4 class="modal-title"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> <?php echo $wo['lang']['edit_offer'] ?></h4>
+            </div>
+            <div class="modal-body">
+                  <div class="wo_settings_page">
+                        <form class="edit-offer-form form-horizontal" method="post">
+                              <div class="app-offer-alert app-general-alert"></div>
+                              <div class="clear"></div>
+                              <div class="setting-panel row job-setting-panel edit_offer_modal_form">
+                                    
+
+                              </div>
+
+                              <div class="publisher-hidden-option">
+                                    <div id="progress" class="create-offer-progress">
+                                          <span id="percent" class="create-product-percent <?php echo Wo_RightToLeft('pull-right');?>">0%</span>
+                                          <div class="progress">
+                                                <div id="bar" class="progress-bar active create-product-bar"></div> 
+                                          </div>
+                                          <div class="clear"></div>
+                                    </div>
+                              </div>
+
+                              
+                              <div class="form-group last-sett-btn modal-footer">
+                                    <div class="ball-pulse"><div></div><div></div><div></div></div>
+                                    <button type="submit" class="btn btn-main setting-panel-mdbtn"><?php echo $wo['lang']['publish'] ?></button>
+                              </div>
+                        </form>
+                  </div>
+            </div>
+      </div>
+</div>
+</div>

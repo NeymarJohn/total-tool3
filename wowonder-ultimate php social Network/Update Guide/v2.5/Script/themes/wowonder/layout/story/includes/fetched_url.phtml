@@ -1,0 +1,22 @@
+<?php if(!empty($wo['story']['postLink']) && empty($wo['story']['postVine']) && empty($wo['story']['postPlaytube']) && empty($wo['story']['postDeepsound']) && empty($wo['story']['postSoundCloud']) && empty($wo['story']['postYoutube']) && empty($wo['story']['postFile'])) { ?>
+	<div class="post-fetched-url wo_post_fetch_link" id="fullsizeimg">
+		<a href="<?php echo $wo['story']['postLink'];?>" target="_blank">
+			<?php if (!empty($wo['story']['postLinkImage'])) {?>
+				<div class="post-fetched-url-con">
+					<img src="<?php echo $wo['story']['postLinkImage'];?>" class="<?php echo Wo_RightToLeft('pull-left');?>" alt="<?php echo $wo['story']['postLinkTitle'];?>"/>
+					<div class="url">
+						<?php 
+							$parse = parse_url($wo['story']['postLink']);
+							echo $parse['host'];
+						?>
+					</div>
+				</div>
+			<?php } ?>
+			<div class="fetched-url-text">
+				<h4><?php echo $wo['story']['postLinkTitle'];?></h4>
+				<div class="description"><?php echo $wo['story']['postLinkContent'];?></div>
+			</div>
+			<div class="clear"></div>
+		</a>
+	</div>
+<?php } ?>

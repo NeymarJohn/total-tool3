@@ -1,0 +1,47 @@
+/* Example to customize the colors of price boxes and buttons */
+.prices-boxes .price-box-1 .pricing-header {
+  background-color: #5d9cec !important;
+}
+.prices-boxes .price-box-2 .pricing-header {
+  background-color: #fb6d9d !important;
+}
+.prices-boxes .price-box-3 .pricing-header {
+  background-color: #7266ba !important;
+}
+.prices-boxes .price-box-4 .pricing-header {
+  background-color: #ffbd4a !important;
+}
+.prices-boxes .price-box-5 .pricing-header {
+  background-color: #81c868 !important;
+}
+.prices-boxes .price-box-6 .pricing-header {
+  background-color: #34d3eb !important;
+}
+.prices-boxes button span {
+  background-image: linear-gradient(#5d9cec,#5c9beb 85%,#5d9beb);
+}
+/* Example with the darktheme */
+.darktheme .prices-boxes .price-box-1 .pricing-header {
+  background-color: #141414 !important;
+}
+.darktheme .prices-boxes .price-box-2 .pricing-header {
+  background-color: #de1212 !important;
+}
+.darktheme .prices-boxes .price-box-3 .pricing-header {
+  background-color: #141414 !important;
+}
+.darktheme .prices-boxes .price-box-4 .pricing-header {
+  background-color: #141414 !important;
+}
+.darktheme .prices-boxes .price-box-5 .pricing-header {
+  background-color: #de1212 !important;
+}
+.darktheme .prices-boxes .price-box-6 .pricing-header {
+  background-color: #141414 !important;
+}
+.darktheme .prices-boxes button,
+.darktheme .prices-boxes a,
+.darktheme .prices-boxes button span,
+.darktheme .prices-boxes a span {
+  background-image: linear-gradient(#de1212,#de1212 85%,#de1212);
+}

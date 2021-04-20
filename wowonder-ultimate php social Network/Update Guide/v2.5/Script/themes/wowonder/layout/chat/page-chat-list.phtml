@@ -1,0 +1,47 @@
+<div class="messages-wrapper <?php echo ($wo['chatMessage']['onwer'] == 1) ? 'pull-right' : 'pull-left';?> messages-text" id="messageId_<?php echo $wo['chatMessage']['id'] ?>" data-page-tmessage-id="<?php echo $wo['chatMessage']['id'] ?>">
+	<?php if ($wo['chatMessage']['onwer'] == 0) { ?>
+		<?php $page = Wo_PageData($wo['chatMessage']['page_id']); if ($page['user_id'] == $wo['chatMessage']['from_id']) { ?>
+            <a href="<?php echo $page['url'];?>" data-ajax="?link1=timeline&u=<?php echo $page['page_name'] ?>">
+               <img class="user-avatar<?php echo ($wo['chatMessage']['onwer'] == 1) ? '-right' : '-left';?>" src="<?php echo $page['avatar'] ?>" alt="<?php echo $page['page_name'] ?> Profile Picture">
+            </a>
+		<?php  } else{ ?>
+			<a href="<?php echo Wo_SeoLink('index.php?link1=timeline&u='.$wo['chatMessage']['user_data']['username']);?>" data-ajax="?link1=timeline&u=<?php echo $wo['chatMessage']['user_data']['username'] ?>">
+				<img class="user-avatar<?php echo ($wo['chatMessage']['onwer'] == 1) ? '-right' : '-left';?>" src="<?php echo $wo['chatMessage']['user_data']['avatar'] ?>" alt="<?php echo $wo['chatMessage']['user_data']['name'] ?> Profile Picture">
+			</a>
+		<?php  } ?>
+	<?php } ?>
+	<div class="message <?php echo ($wo['chatMessage']['onwer'] == 1) ? 'outgoing pull-right' : 'incoming pull-left';?>">
+		<?php if (!empty($wo['chatMessage']['text'])): ?>
+			<p class="message-text" dir="auto" style="background: <?php echo ($wo['chatMessage']['onwer'] == 1 && isset($wo['chat']['color'])) ? $wo['chat']['color'] . ' !important;' : '';?>;<?php echo ($wo['chatMessage']['onwer'] == 1) ? ' color:#fff !important;' : '';?>">
+				<?php if($wo['chatMessage']['type_two'] == 'contact'): 
+					$json = json_decode(trim(htmlspecialchars_decode($wo['chatMessage']['text'])), true);
+					echo $json['Value'] . ' (' . $json['Key'] . ')';
+				?>
+				<?php else: echo $wo['chatMessage']['text']; endif;?>
+			</p>
+		<?php endif ?>
+		<div class="clear"></div>
+		<div class="message-media">
+			<?php  
+				if(isset($wo['chatMessage']['media']) && !empty($wo['chatMessage']['media'])) {
+					$media = array('type' => 'chatMessage', 'storyId' => $wo['chatMessage']['id'], 'filename' => $wo['chatMessage']['media'], 'name' => $wo['chatMessage']['mediaFileName']); 
+					echo Wo_DisplaySharedFile($media, 'chat');   
+				} 
+			?>
+            <?php if (!empty($wo['chatMessage']['stickers'])): ?>
+				<?php if (strpos('.mp4', $wo['chatMessage']['stickers'])) { ?>
+					<video autoplay loop><source src="<?php echo $wo['chatMessage']['stickers']; ?>" type="video/mp4"></video>
+				<?php } else { ?>
+					<img src="<?php echo $wo['chatMessage']['stickers']; ?>" alt="GIF">
+				<?php } ?>
+			<?php endif; ?>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<?php if($wo['chatMessage']['user_data']['user_id'] == $wo['user']['user_id']) { ?>
+		<div class="message-seen text-right message-details"></div>
+		<div class="clear"></div>
+	<?php } ?>
+	<div class="message-typing message-details"></div>
+</div>
+<div class="clear"></div>

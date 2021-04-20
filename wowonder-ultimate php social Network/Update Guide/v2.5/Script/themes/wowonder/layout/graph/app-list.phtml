@@ -1,0 +1,13 @@
+<div class="col-md-6 col-sm-12">
+	<div class="wow_content wow_dev_apps">
+		<div class="ap_hdr">
+			<div class="avatar <?php echo Wo_RightToLeft('pull-left');?>">
+				<a href="<?php echo Wo_SeoLink('index.php?link1=app&app_id=' .  $wo['app']['id']);?>"><img src="<?php echo $wo['app']['app_avatar'];?>" alt="<?php echo $wo['app']['app_name']; ?>" /></a>
+			</div>
+			<div class="ap_name"><a href="<?php echo Wo_SeoLink('index.php?link1=app&app_id=' .  $wo['app']['id']);?>"><?php echo $wo['app']['app_name']; ?></a></div>
+		</div>
+		<hr>
+		<p>App ID: <?php echo $wo['app']['app_id']; ?></p>
+		<a href="<?php echo Wo_SeoLink('index.php?link1=app&app_id=' .  $wo['app']['id']);?>" class="btn btn-main btn-mat"><?php echo $wo['lang']['edit']; ?></a>
+	</div>
+</div>

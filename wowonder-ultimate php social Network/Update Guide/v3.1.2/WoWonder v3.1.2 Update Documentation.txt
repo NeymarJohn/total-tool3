@@ -1,0 +1,35 @@
+﻿WoWonder v3.1.2 Update Documentation
+
+Note:
+
+This update is just for who is using 3.1.1, if you're still using older verisons, PLEASE UPDATE the script version by version.
+
+// ------------------------------------- //
+
+1) How To Update
+
+- BACKUP, BACKUP, AND BACKUP everything, files, DATABASE. Please BACKUP!
+
+- Upload "update.php" file located on "Update Guide/v3.1.2" folder to your server.
+
+- Upload and overwrite ALL files/folders (SELECT ALL) file(s) located inside "Update Guide/v3.1.2/Script/" folder to your server, if you have renamed your themes, please open "Update Guide/v3.1.2/Script/themes/wowonder/" and upload & overwrite ALL files/folders to your theme folder.
+
+- Once the files are uploaded, open and run http://www.YOURSITE.COM/update.php and follow the instructions.
+
+- Note: Don't run "update.php" file until all the files are uploaded.
+
+- Note: If you are using nodejs, reboot your nodejs server. 
+
+- For more information, please read our FAQ https://docs.wowonder.com/faqs.html#a-234234
+
+// ------------------------------------- //
+
+if you're facing any problems, please contact me so i can help.
+
+Created: 11/23/2015
+Last Update: 28/03/2021
+By: Deen Doughouz (DoughouzForest)
+Email: wowondersocial@gmail.com
+Website: http://www.wowonder.com
+
+Copyright © 2021 WoWonder - The Ultimate Social Networking Platform. All rights reserved.

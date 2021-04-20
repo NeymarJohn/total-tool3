@@ -1,0 +1,85 @@
+<?php
+	if (!empty($wo['story']['product_id'])) {
+		$class = '';
+		$small = '';
+		$singleimg = '';
+		if (count($wo['story']['product']['images']) == 1) {
+			$singleimg = 'wo_single_proimg';
+		}
+		if (count($wo['story']['product']['images']) == 2) {
+            $class = 'width-2';
+		}
+		if (count($wo['story']['product']['images']) > 1) {
+            $small = '_small';
+		}
+		if (count($wo['story']['product']['images']) > 2) {
+            $class = 'width-3';
+		}
+		if (count($wo['story']['product']['images']) > 3) {
+			foreach (array_slice($wo['story']['product']['images'],0,3) as $key => $photo) {
+				if ($key == 2) {
+					echo "<div onclick='Wo_OpenAlbumLightBox(" . $photo['id'] . ", \"product\");' class='album-collapse pointer'> 
+                       <img src='".($photo['image_org'])."' class='image-file'>
+                       <span>+".count(array_slice($wo['story']['product']['images'],2))."</span>
+                   </div>
+                   "; 
+				}
+				else{
+					echo  "<img src='" . ($photo['image_org']) ."' alt='image' class='" . $class . " image-file pointer' 
+                  onclick='Wo_OpenAlbumLightBox(" . $photo['id'] . ", \"product\");'>";
+				}
+			}
+			foreach (array_slice($wo['story']['product']['images'],3) as $photo) {
+				echo  "<img src='" . ($photo['image_org']) ."' alt='image' class='" . $class . " image-file pointer hidden' 
+                 onclick='Wo_OpenAlbumLightBox(" . $photo['id'] . ", \"product\");'>";
+			}
+		}
+		else{
+			foreach ($wo['story']['product']['images'] as $photo) {
+				echo  "<img src='" . ($photo['image_org']) ."' alt='image' class='" . $class . " " . $singleimg . " image-file pointer' 
+                 onclick='Wo_OpenAlbumLightBox(" . $photo['id'] . ", \"product\");'>";
+			}
+		}
+		echo '<br><br>';
+		$symbol =  (!empty($wo['currencies'][$wo['story']['product']['currency']]['symbol'])) ? $wo['currencies'][$wo['story']['product']['currency']]['symbol'] : $wo['config']['classified_currency_s'];
+		$text =  (!empty($wo['currencies'][$wo['story']['product']['currency']]['text'])) ? $wo['currencies'][$wo['story']['product']['currency']]['text'] : $wo['config']['classified_currency'];
+		$status = ($wo['story']['product']['status'] == 0) ? '' . $wo['lang']['in_stock'] . '' : '<span class="product-status-sold">' . $wo['lang']['sold'] . '</span><br><br>';
+		$type = ($wo['story']['product']['type'] == 0) ? '<span class="product-description">' . $wo['lang']['new'] . '</span>' : '<span class="product-description">' . $wo['lang']['used'] . '</span><br>';
+		echo '<div class="wow_post_prod">';
+		echo '<h4 class="wow_post_prod_name">' . $wo['story']['product']['name'] . '</h4>';
+		echo '<div class="wow_post_prod_shead">';
+		if (!empty($wo['story']['product']['location'])) {
+			echo '<span> ' . $wo['story']['product']['location'] . '</span><span class="middot">·</span>';
+		}
+		echo '<span> ' . $status . '</span>';
+		echo '</div>';
+		echo '<div class="wow_post_prod_infos"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20,8H4V6H20M20,18H4V12H20M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" /></svg>' . $wo['lang']['price'] . ' <span class="product-description" style="max-height: none;">' . $symbol . $wo['story']['product']['price'] . ' (' . $text . ')</span></div>';
+		echo '<div class="wow_post_prod_infos"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M16,17H5V7H16L19.55,12M17.63,5.84C17.27,5.33 16.67,5 16,5H5A2,2 0 0,0 3,7V17A2,2 0 0,0 5,19H16C16.67,19 17.27,18.66 17.63,18.15L22,12L17.63,5.84Z" /></svg>' . $wo['lang']['type'] . ' ' . $type . '</div>';
+		echo '<div class="wow_post_prod_infos"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" /></svg><p class="product-description product-description-'.$wo['story']['product']['id'].'">' . $wo['story']['product']['description'] . '</p></div>';
+
+
+		$fields = Wo_GetCustomFields('product'); 
+		if (!empty($fields)) {
+			foreach ($fields as $key => $wo['field']) { 
+				if (!empty($wo['story']['product']['fid_'.$wo['field']['id']])) {
+					if ($wo['field']['type'] == 'selectbox') {
+						$options = @explode(',', $wo['field']['options']);
+						foreach ($options as $key => $value) {
+							if (($key + 1) == $wo['story']['product']['fid_'.$wo['field']['id']]) {
+								$wo['story']['product']['fid_'.$wo['field']['id']] = $value;
+							}
+						}
+					}
+					echo '<div class="wow_post_prod_infos"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" /></svg><p class="product-description">' . $wo['story']['product']['fid_'.$wo['field']['id']] . '</p></div>';
+		        } 
+		    } 
+	    } 
+
+
+		echo '</div>';
+		if ($wo['loggedin']) { if ($wo['page']  == 'story' && $wo['story']['product']['user_id'] != $wo['user']['user_id']) { ?>
+			<br>
+				<button class="contact btn btn-success btn-mat" onclick="Wo_OpenChatTab(<?php echo $wo['story']['product']['user_id']?>,0,<?php echo $wo['story']['product']['id']?>)"><?php echo $wo['lang']['contact_seller'] ?></button> 
+			<?php }}
+	} 
+?>

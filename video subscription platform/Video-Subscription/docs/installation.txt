@@ -1,0 +1,31 @@
+
+Thank you for your purchase !
+
+
+Please follow the instructions below to perform the first installation:
+
+
+1. Transfer the files from the www directory to your server using FTP software like filezilla.
+
+
+2. Create a MySql database on your server, choose the name of the MySql database, the username and the password and note this informations which will be useful to you to configure your application…
+
+
+3. Open the URL http://www.yourdomain.com/install/index.php and follow the instructions on the screen.
+
+
+4. When the installation is complete, go to: http://www.yourdomain.com/login/ and log in using the following credentials. 
+
+  Username: admin@coffeetheme.com 
+  Password: password
+
+5. In the “Users” tab, immediately change the default administrator account password to secure your application.
+
+
+6. Complete remove the installation folder from your server to secure your application. This folder is accessible from the web, another person could perform the installation again and access the backend.
+
+
+If you encounter difficulties during the installation, please consult our website.
+
+
+http://www.coffeetheme.com/support/

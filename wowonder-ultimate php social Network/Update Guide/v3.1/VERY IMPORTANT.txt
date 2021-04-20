@@ -1,0 +1,1 @@
+- IMPORTANT, FOR YOUR OWN SECURITY if you are using Nginx, you have to update your NGINX server rewrite rules with the new "Update Guide/v3.1/Script/nginx.conf". If you don't other users can easily access your DB info online due nodejs configration.

@@ -1,0 +1,62 @@
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>Pro System > Pro Features</h2>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-5 col-md-5">
+            <div class="card">
+                <div class="header">
+                    <h2>Pro Features</h2>
+                </div>
+                <div class="body">
+                    <div class="alert alert-success pro-settings-alert"></div>
+                    <form class="pro-settings" method="POST">
+                        <label for="who_upload">upload System </label>
+                        <div class="form-group">
+                            <input type="radio" name="who_upload" id="who_upload-enabled" value="all" <?php echo ($wo['config']['who_upload'] == 'all') ? 'checked': '';?>>
+                            <label for="who_upload-enabled">All Users</label>
+                            <input type="radio" name="who_upload" id="who_upload-disabled" value="pro" <?php echo ($wo['config']['who_upload'] == 'pro') ? 'checked': '';?>>
+                            <label for="who_upload-disabled" class="m-l-20">Pro Users</label>
+                        </div>
+                        <label for="Who_call">Make Calls</label>
+                        <div class="form-group">
+                            <input type="radio" name="Who_call" id="Who_call-enabled" value="all" <?php echo ($wo['config']['Who_call'] == 'all') ? 'checked': '';?>>
+                            <label for="Who_call-enabled">All Users</label>
+                            <input type="radio" name="Who_call" id="Who_call-disabled" value="pro" <?php echo ($wo['config']['Who_call'] == 'pro') ? 'checked': '';?>>
+                            <label for="Who_call-disabled" class="m-l-20">Pro Users</label>
+                        </div>
+                        <br>
+                        <div class="clearfix"></div>
+                        <br><br>
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function() {
+   var form_site_settings = $('form.pro-settings');
+    form_site_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_site_settings.find('.waves-effect').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_site_settings.find('.waves-effect').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.pro-settings-alert').html('<i class="fa fa-check"></i> Settings updated successfully');
+                setTimeout(function () {
+                    $('.pro-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+});
+</script>

@@ -1,0 +1,1185 @@
+<!doctype html>
+<!--[if IE 6 ]>
+<html lang="en-us" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>
+<html lang="en-us" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>
+<html lang="en-us" class="ie8"> <![endif]-->
+<!--[if (gt IE 7)|!(IE)]><!-->
+<html lang="en-us">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Worksuite SAAS - Project Management System (Latest Laravel - 7)</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="Abhinav Saraswat">
+    <meta name="copyright" content="Abhinav Saraswat">
+    <meta name="generator" content="Documenter v2.0 http://rxa.li/documenter">
+    <meta name="date" content="2017-05-18T00:00:00+02:00">
+
+    <link rel="stylesheet" href="assets/css/documenter_style.css" media="all">
+    <link rel="stylesheet" href="assets/js/google-code-prettify/prettify.css" media="screen">
+
+    <style>
+        html {
+            background-color: #EEEEEE;
+            color: #383838;
+        }
+
+        ::-moz-selection {
+            background: #333636;
+            color: #00DFFC;
+        }
+
+        ::selection {
+            background: #333636;
+            color: #00DFFC;
+        }
+
+        #documenter_sidebar #documenter_logo {
+            background-image: url(assets/images/logo-1.png);
+        }
+
+        a {
+            color: #008C9E;
+        }
+
+        .btn {
+            border-radius: 3px;
+        }
+
+        .btn-primary {
+            background-image: -moz-linear-gradient(top, #008C9E, #006673);
+            background-image: -ms-linear-gradient(top, #008C9E, #006673);
+            background-image: -webkit-gradient(linear, 0 0, 0 008 C9E%, from(#343838), to(#006673));
+            background-image: -webkit-linear-gradient(top, #008C9E, #006673);
+            background-image: -o-linear-gradient(top, #008C9E, #006673);
+            background-image: linear-gradient(top, #008C9E, #006673);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#008C9E', endColorstr='#006673', GradientType=0);
+            border-color: #006673 #006673 #bfbfbf;
+            color: #FFFFFF;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:active,
+        .btn-primary.active,
+        .btn-primary.disabled,
+        .btn-primary[disabled] {
+            border-color: #008C9E #008C9E #bfbfbf;
+            background-color: #006673;
+        }
+
+        hr {
+            border-top: 1px solid #D4D4D4;
+            border-bottom: 1px solid #FFFFFF;
+        }
+
+        #documenter_sidebar,
+        #documenter_sidebar ul a {
+            background-color: #343838;
+            color: #FFFFFF;
+        }
+
+        #documenter_sidebar ul a {
+            -webkit-text-shadow: 1px 1px 0px #494F4F;
+            -moz-text-shadow: 1px 1px 0px #494F4F;
+            text-shadow: 1px 1px 0px #494F4F;
+        }
+
+        #documenter_sidebar ul {
+            border-top: 1px solid #212424;
+        }
+
+        #documenter_sidebar ul a {
+            border-top: 1px solid #494F4F;
+            border-bottom: 1px solid #212424;
+            color: #FFFFFF;
+        }
+
+        #documenter_sidebar ul a:hover {
+            background: #333636;
+            color: #00DFFC;
+            border-top: 1px solid #333636;
+        }
+
+        #documenter_sidebar ul a.current {
+            background: #333636;
+            color: #00DFFC;
+            border-top: 1px solid #333636;
+        }
+
+        #documenter_copyright {
+            display: block !important;
+            visibility: visible !important;
+        }
+    </style>
+
+</head>
+
+<body class="documenter-project-froiden-pms">
+    <div id="documenter_sidebar">
+        <a href="#documenter_cover" id="documenter_logo"></a>
+        <ul id="documenter_nav">
+            <li><a class="current" href="#documenter_cover">Start</a></li>
+
+            <li><a href="#description" title="Description">Description</a></li>
+            <li><a href="#server_requirements" title="Server Requirements">Server Requirements</a></li>
+            <li><a href="#installation" title="Installation">Installation</a></li>
+            <li><a href="#configuration" title="Configuration">Configuration</a></li>
+            <li><a href="#admin_panel" title="Admin Panel">Admin Panel</a></li>
+            <li><a href="#employee_panel" title="Employee Panel">Employee Panel</a></li>
+            <li><a href="#client_panel" title="Client Panel">Client Panel</a></li>
+            <li><a href="#language_translation" title="Client Panel">Language Translation</a></li>
+            <li><a href="#demo" title="Demo">Demo</a></li>
+            <li><a href="#update" title="Update Instructions">Update Instructions</a></li>
+            <li><a href="#stripe" title="Stripe Settings">Stripe Settings</a></li>
+            <li><a href="#social" title="Social Login">Social Login</a></li>
+
+        </ul>
+        <div id="documenter_copyright">Copyright Abhinav Saraswat 2019<br>
+            made with the <a href="http://rxa.li/documenter">Documenter v2.0</a>
+        </div>
+    </div>
+    <div id="documenter_content">
+        <section id="documenter_cover">
+            <h1>Worksuite SAAS</h1>
+
+            <h2>Project Management System (Laravel - 7)</h2>
+
+            <div id="documenter_buttons">
+
+            </div>
+            <hr>
+            <ul>
+                <li>created: 01 June 2017</li>
+                <li>Latest update: 24th September 2020</li>
+                <li>by: Abhinav Saraswat</li>
+            </ul>
+            <p>Thank you for purchasing my script. If you have any questions that are beyond the scope of this help
+                file,
+                please feel free to email via my user page contact form here. Thanks so much!</p>
+        </section>
+
+        <section id="description">
+            <div class="page-header">
+                <h3>Description</h3>
+                <hr class="notop">
+            </div>
+            <div>
+                Worksuite is a project management software written in Laravel 5.4 (PHP Framework) which is specifically
+                developed for freelancers and SMEs (Small/Medium sized enterprises). You can manage your company's daily
+                work, your employee's tasks, keep a track on project's progress and much more. It is designed with
+                latest
+                security and code standards.
+            </div>
+        </section>
+        <section id="server_requirements">
+            <div class="page-header">
+                <h3>Server Requirements</h3>
+                <hr class="notop">
+            </div>
+            <div>
+                The Server needs to meet the following requirement to the application.
+            </div>
+            <div>
+                &nbsp;</div>
+            <ol>
+                <li>
+                    PHP &gt;= 7.2.5
+                </li>
+                <li>
+                    OpenSSL PHP Extension
+                </li>
+                <li>
+                    PDO PHP Extension
+                </li>
+                <li>
+                    Mbstring PHP Extension
+                </li>
+                <li>
+                    Tokenizer PHP Extension
+                </li>
+                <li>
+                    XML PHP Extension
+                </li>
+                <li>
+                    GD PHP Extension
+                </li>
+                <li>
+                    Fileinfo PHP Extension
+                </li>
+            </ol>
+        </section>
+        <section id="installation">
+            <div class="page-header">
+                <h3>Installation</h3>
+                <hr class="notop">
+            </div>
+            <div style="white-space: normal;" class="alert alert-info">
+                WATCH INSTALLATION VIDEO
+                <h4>
+                <a href="https://www.youtube.com/watch?v=vtANWD_1fok" style="color: black" target="_blank">https://www.youtube.com/watch?v=vtANWD_1fok</a></h4>
+            </p>
+
+            </div>
+            <p style="white-space: normal;">
+                &nbsp;
+            </p>
+            <div style="white-space: normal;">
+                Pre-installation Requirements:
+            </div>
+            <div style="white-space: normal;">
+                &nbsp;</div>
+            <div style="white-space: normal;">
+                File System Permissions
+            </div>
+            <div style="white-space: normal;">
+                &nbsp;</div>
+            <div style="white-space: normal;">
+                To be able to start the installation at all, you must set appropriate permissions for storage folder and
+                it&#39;s
+                subfolders. So, the very first thing to do is to set permissions to 777 for storage folder, all its
+                subfolders.
+            </div>
+            <div style="white-space: normal;">
+                &nbsp;</div>
+            <div style="white-space: normal;">
+                After setting the permissions you are ready to proceed to the installation.
+            </div>
+            <div style="white-space: normal;">
+                &nbsp;</div>
+            <div style="white-space: normal;">
+                After downloading the ZIP archive, and uploading it to your server, the first thing you have to do is to
+                create the database where system tables will be created. Let&#39;s say, you create the database called
+                pms.
+            </div>
+            <div style="white-space: normal;">
+                <hr>
+                <h2>
+                    Step 1 - Welcome Screen</h2>
+
+                <p>
+                    After creating the database next step is accessing the application URL from a browser. One thing you
+                    need to know is that Laravel is designed to allow HTTP access to the application from your public
+                    folder
+                    only. This means that this application will be available at yourdomain.com/public. It is good enough
+                    for
+                    installation and development purposes, however, for production, you will probably want to have your
+                    application available at yourdomain.com. In next section, I will show you how you can accomplish
+                    that.</p>
+
+                <div class="alert alert-error" style="white-space: normal;">
+                    <strong>Note</strong>: If you see any error check that you should have <strong>.env</strong> file at
+                    your root location.
+                </div>
+
+
+                <p>
+                    To open the installer. Visit&nbsp;</p>
+                <div class="alert alert-info">
+                    <span style="font-family: Arial, verdana, arial, sans-serif;">yourdomain.com/public/install</span>
+                </div>
+            </div>
+            <div style="white-space: normal;">
+                &nbsp;</div>
+            <div style="white-space: normal;">
+                Now the installer will show up.The First screen will be Welcome Screen
+            </div>
+            <div style="white-space: normal;">
+                <img alt="" src="assets/images/image_30.jpg" style="width: 619px;"></div>
+            <div style="white-space: normal;">
+                &nbsp;</div>
+            <div class="alert alert-error" style="white-space: normal;">
+                <strong>Note</strong>: If you are not able to access the website by accessing
+                yourdomain.com/public/install,
+                but you are able to access it via yourdomain.com/public/index.php/install, this means that you probably
+                don&#39;t
+                have Apache mod_rewrite installed and enabled.
+            </div>
+            <h2 style="white-space: normal;">
+                &nbsp;</h2>
+
+            <h2 style="white-space: normal;">
+                Step 2 - Database/Environment Setting</h2>
+
+            <p style="white-space: normal;">
+                On step 2 you have to fill in your database credentials&nbsp;</p>
+
+            <p style="white-space: normal;">
+                <img alt="" src="assets/images/image_31.jpg"></p>
+
+            <h2 style="white-space: normal;">
+                Step 3: System Requirements</h2>
+
+            <p style="white-space: normal;">
+                After clicking on &quot;Next&quot; button, you will be redirected to System &nbsp;Requirements step
+                during
+                the installation wizard, System Requirements.</p>
+
+            <p style="white-space: normal;">
+                <img alt="" src="assets/images/image_32.jpg" style="width: 580px;"></p>
+
+            <h2 style="white-space: normal;">
+                Step 4 - Directory Permissions</h2>
+
+            <div>
+                After successfully enabling and installing all required PHP extensions, next step is to set the
+                appropriate
+                permissions for some system folders. All directories listed on step 4 has to be writable by the
+                application,
+                as it is displayed on the following picture.
+            </div>
+            <div>
+                &nbsp;</div>
+            <div>
+                <img alt="" src="assets/images/image_53.jpg" style="width: 580px;"></div>
+            <div>
+                &nbsp;</div>
+            <h2>
+                Step 5: Exit</h2>
+
+            <p>
+                The last step is exit step.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_33.jpg" style="width: 603px;"></p>
+
+            <div>
+                Now You are ready to go.
+            </div>
+
+            <div>
+                &nbsp;</div>
+            <div>
+                Login details are
+            </div>
+            <div>
+                &nbsp;</div>
+            <pre class="prettyprint lang-html linenums"
+                 style="background-image: url(&quot;../../_img/pre_bg.png&quot;);">
+<strong>Super Admin</strong>
+
+Email: superadmin@example.com
+
+Password:123456
+
+                </pre>
+            <pre class="prettyprint lang-html linenums">
+<strong>Admin</strong>
+
+Email: admin@example.com
+
+Password:123456
+
+</pre>
+            <div>
+                <pre class="prettyprint lang-html linenums">
+<strong>Employee</strong>
+
+Email: employee@example.com
+
+Password:123456
+
+</pre>
+                <div>
+                    <pre class="prettyprint lang-html linenums">
+<strong>Client</strong>
+
+Email: client@example.com
+
+Password:123456</pre>
+                </div>
+            </div>
+            <p>
+                &nbsp;</p>
+        </section>
+
+        <section id="configuration">
+            <div class="page-header">
+                <h3>Configuration</h3>
+                <hr class="notop">
+            </div>
+
+
+
+            <p style="white-space: normal;">
+                &nbsp;</p>
+
+            <div style="white-space: normal;">
+                <h2>
+                    Step 1 - Setup email settings</h2>
+
+                <p>Setup your email configuration in superadmin email settings.</p>
+
+                <p style="white-space: normal;">
+                    <img alt="" src="assets/images/image_55.jpg" style="width: 800px;"></p>
+
+            </div>
+
+            <p style="white-space: normal;">
+                &nbsp;</p>
+
+            <p style="white-space: normal;">
+                &nbsp;</p>
+
+            <div style="white-space: normal;">
+                <h2>
+                    Step 2 - Setup payment settings</h2>
+
+                <p>Setup your payment settings for the package purchase.</p>
+
+                <p style="white-space: normal;">
+                    <img alt="" src="assets/images/image_56.jpg" style="width: 800px;"></p>
+
+            </div>
+
+            <p style="white-space: normal;">
+                &nbsp;</p>
+
+            <p style="white-space: normal;">
+                &nbsp;</p>
+
+            <div style="white-space: normal;">
+                <h2>
+                    Step 3 - Set GOOGLE RECAPTCHA KEY (v2) </h2>
+
+                    <p>Add google recaptcha key in superadmin global settings.</p>
+
+
+
+            </div>
+
+            <p style="white-space: normal;">
+                &nbsp;</p>
+
+
+
+        </section>
+        <section id="admin_panel">
+            <div class="page-header">
+                <h3>Admin Panel</h3>
+                <hr class="notop">
+            </div>
+            <h3>
+                Dashboard</h3>
+
+            <p>
+                Admin dashboard shows important information about&nbsp;your projects, payments, clients and employees.
+            </p>
+
+            <p>
+                <img alt="" src="assets/images/image_3.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h3>
+                Clients</h3>
+
+            <p>
+                This section shows you the list of all your clients. You can see the details related to the client by
+                click
+                on the client name.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_1.png" style="width: 800px; "></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h3>
+                Employees</h3>
+
+            <p>
+                This section shows the list of all employees in your company.&nbsp;You can see the details related to
+                the
+                employee by click on the employee name. You can also change the roles of the users from this table.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_5.png" style="width: 800px; "></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h3>
+                Atttendance</h3>
+
+            <p>
+                This section allows you to mark and track the attendance of your employees.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_48.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h3>
+                Projects</h3>
+
+            <p>
+                It shows the list of projects your company is working on. You can view the details by clicking on
+                project
+                name.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_11.png" style="width: 800px; "></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h3>
+                Task Calendar</h3>
+
+            <p>
+                It shows all the tasks which you have assigned to your employees on a calendar according to their due
+                dates.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_14.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+            <h3 id="admin_panel_estimates">Estimates</h3>
+            <p>
+                You can generate estimates/quotations for your clients. The estimate will be visible to client in their
+                panel.</p>
+            <p>
+                <img alt="" src="assets/images/image_39.png" style="width: 800px; "></p>
+
+
+            <p>
+                &nbsp;</p>
+
+            <h3>
+                Invoices</h3>
+
+            <p>
+                It shows the list of all invoices which you have generated for your clients.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_7.png" style="width: 800px; "></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h3>
+                Payments</h3>
+
+            <p>
+                It shows the list of all payments made by your clients.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_40.png" style="width: 800px; "></p>
+            <p>
+                &nbsp;</p>
+
+            <h3>
+                Expenses</h3>
+
+            <p>
+                You can manage the expenses made by you and your employees.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_42.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h3>
+                Events</h3>
+
+            <p>
+                It shows the list of events.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_51.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h3>
+                Time Logs</h3>
+
+            <p>
+                It shows the time logged by your employees on which they are working. you can filter the results by date
+                range and for a particular project.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_18.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h3>
+                Tasks</h3>
+
+            <p>
+                It shows the list of all the tasks which you created for your employees. You can filter the results by
+                date
+                range and for a particular project.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_16.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h3>
+                Tickets</h3>
+
+            <p>
+                You can create or update the tickets submitted by the users.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_44.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h3>
+                Notice Board</h3>
+
+            <p>
+                These are the notices which you can publish for your employees.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_10.png" style="width: 800px; "></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h3>
+                Sticky Notes</h3>
+
+            <p>
+                These are the personal notes which will not be seen by any other user.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_13.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h3>
+                Reports</h3>
+            <h4 id="admin_panel_task_report">Task Report</h4>
+
+            <p>
+                You can view the report for your completed and incomplete tasks.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_15.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+            <h4 id="admin_panel_time_log_report">Time Log Report</h4>
+
+            <p>
+                It shows the report for no of hours logged according to the dates.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_17.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+            <h4 id="admin_panel_finance_report">Finance Report</h4>
+
+            <p>
+                It shows the date wise earning you have earned. It gets the amount from paid invoices and shows the
+                amount
+                in your base currency (can be changed in settings).</p>
+
+            <p>
+                <img alt="" src="assets/images/image_6.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+            <h4 id="admin_panel_expense_report">Income vs Expense Report</h4>
+
+            <p>
+                It shows the the report for the income vs expenses you have made for the duration you choose.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_43.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h3>
+                Settings</h3>
+            <h4 id="admin_panel_account_settings">Account Settings</h4>
+
+            <p>
+                You can manage the basic settings about your organisation here.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_12.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+            <h4 id="admin_panel_email_settings">Email Settings</h4>
+
+            <p>
+                You can set your email preferences for your clients and employees.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_4.png" style="width: 800px; "></p>
+
+            <p>
+                &nbsp;</p>
+            <!--<h4 id="admin_panel_module_settings">Module Settings</h4>-->
+
+            <!--<p>-->
+            <!--You can enable/disable modules for you clients and employees.</p>-->
+
+            <!--<p>-->
+            <!--<img alt="" src="assets/images/image_9.png" style="width: 800px; "></p>-->
+
+            <!--<p>-->
+            <!--&nbsp;</p>-->
+            <h4 id="admin_panel_currency_settings">Currency Settings</h4>
+
+            <p>
+                You can add/delete the currencies in which you can receive the payments from the client.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_2.png" style="width: 800px; "></p>
+
+            <p>
+                &nbsp;</p>
+            <h4 id="admin_panel_theme_settings">Theme Settings</h4>
+
+            <p>
+                You can change the look of the all the panels as per your choice from the theme settings section.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_38.png" style="width: 800px; "></p>
+
+            <p>
+                &nbsp;</p>
+            <h4 id="admin_panel_ticket_settings">Ticket Settings</h4>
+
+            <p>
+                Set the settings related to support tickets.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_45.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+            <h4 id="admin_panel_attendance_settings">Attendance Settings</h4>
+
+            <p>
+                Set the settings related to employee attendance.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_50.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+            <h4 id="admin_panel_roles_settings">Roles & Permissions Settings</h4>
+
+            <p>
+                Create roles and assign permissions for users.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_52.png" style="width: 800px;"></p>
+        </section>
+        <section id="employee_panel">
+            <div class="page-header">
+                <h3>Employee Panel</h3>
+                <hr class="notop">
+            </div>
+            <h2>
+                Dashboard</h2>
+
+            <p>
+                Employee dashboard shows important information about&nbsp;employee&#39;s projects, tasks, and time logs.
+            </p>
+
+            <p>
+                <img alt="" src="assets/images/image_24.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h2>
+                Attendance</h2>
+
+            <p>
+                Employee dashboard shows his attendance details for a date range.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_49.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h2>
+                Projects</h2>
+
+            <p>
+                It shows the list of projects on which employee is working on. An employee can view the details by
+                clicking
+                on the project name.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_27.png" style="width: 800px;"></p>
+
+
+            <p>
+                &nbsp;</p>
+
+            <h2>
+                Tickets</h2>
+
+            <p>View tickets assigned to employees.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_46.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h2>
+                Task Calendar</h2>
+
+            <p>
+                It shows all the tasks which an employee has been assigned on a calendar according to their due dates.
+            </p>
+
+            <p>
+                <img alt="" src="assets/images/image_29.png" style="width: 800px;"></p>
+
+
+            <p>
+                &nbsp;</p>
+
+            <h2>
+                Messages</h2>
+
+            <p>
+                Employees can chat with their other team members.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_25.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h2>
+                Sticky Notes</h2>
+
+            <div>
+                These are the personal notes which will not be seen by any other user.
+            </div>
+            <div>
+                &nbsp;</div>
+            <div>
+                <img alt="" src="assets/images/image_28.png" style="width: 800px;"></div>
+            <div>
+                &nbsp;</div>
+            <div>
+                &nbsp;</div>
+            <h2>
+                Notices</h2>
+
+            <p>
+                It shows the list of all notices which are published by admin for the team.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_26.png" style="width: 800px;"></p>
+        </section>
+        <section id="client_panel">
+            <div class="page-header">
+                <h3>Client Panel</h3>
+                <hr class="notop">
+            </div>
+            <h2>
+                Dashboard</h2>
+
+            <p>
+                Client dashboard shows important information about&nbsp;client projects, issues, and payments.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_19.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h2>
+                Projects</h2>
+
+            <p>
+                It shows the list of client&#39;s projects.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_22.png" style="width: 800px; "></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h2>
+                Tickets</h2>
+
+            <p>
+                It shows list of tickets requested by client.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_47.png" style="width: 800px;"></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h2>
+                Invoices</h2>
+
+            <p>
+                It shows the list of invoices which are paid or unpaid by the client.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_20.png" style="width: 800px; "></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h2>
+                Estimates</h2>
+
+            <p>
+                It shows the list of estimates which were sent to the client.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_41.png" style="width: 800px; "></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h2>
+                Issues</h2>
+
+            <p>
+                These are the list of issues which are reported by the client for his projects.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_21.png" style="width: 800px; "></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h2>
+                Sticky Note</h2>
+
+            <p>
+                Clients can create their personal notes.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_23.png" style="width: 800px; "></p>
+        </section>
+
+        <section id="language_translation">
+            <div class="page-header">
+                <h3>Language Translation</h3>
+                <hr class="notop">
+            </div>
+            <p>
+                You can change the translations if required using the translation manager.
+            </p>
+
+            <h2>
+                Step 1</h2>
+
+            <p>
+                Visit <i><strong>yourdomain.com/translations</strong></i>.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_35.png" style="width: 800px; "></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h2>
+                Step 2</h2>
+
+            <p>
+                Your all translations are arranged in groups. Choose a group from dropdown to change the translations.
+                <br>You will a see list of translations for each language for every group you select.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_36.png" style="width: 800px; "></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h2>
+                Step 3</h2>
+
+            <p>
+                1. Now to change the translation string click on the string and you will see a popup to change it.
+                <br>2.
+                Change the string and click on blue check button.
+                <br>3. Similarly do it for all strings you want to change.</p>
+
+            <p>
+                <img alt="" src="assets/images/image_37.png" style="width: 800px; "></p>
+
+            <p>
+                &nbsp;</p>
+
+            <h2>
+                Step 4</h2>
+
+            <p>
+                Now just click on the <strong>Publish translations</strong> button on top to apply the changes.</p>
+
+
+        </section>
+
+
+        <section id="demo">
+            <div class="page-header">
+                <h3>Demo</h3>
+                <hr class="notop">
+            </div>
+            <div>
+                Demo Login details are
+            </div>
+            <div>
+                &nbsp;</div>
+            <pre class="prettyprint lang-html linenums"
+                style="background-image: url(&quot;../../_img/pre_bg.png&quot;);">
+<strong>Super Admin</strong>
+
+Email: superadmin@example.com
+
+Password:123456
+
+                </pre>
+
+            <pre class="prettyprint lang-html linenums"
+                style="background-image: url(&quot;../../_img/pre_bg.png&quot;);">
+<strong>Admin</strong>
+
+Email: admin@example.com
+
+Password:123456
+
+</pre>
+            <div>
+                <pre class="prettyprint lang-html linenums"
+                    style="background-image: url(&quot;../../_img/pre_bg.png&quot;);">
+<strong>Employee</strong>
+
+Email: employee@example.com
+
+Password:123456
+
+</pre>
+            </div>
+            <div>
+                <pre class="prettyprint lang-html linenums"
+                    style="background-image: url(&quot;../../_img/pre_bg.png&quot;);">
+<strong>Client</strong>
+
+Email: client@example.com
+
+Password:123456</pre>
+            </div>
+            <div>
+                &nbsp;</div>
+        </section>
+
+        <section id="update">
+            <div class="page-header">
+                <h3>Update Instructions</h3>
+                <hr class="notop">
+            </div>
+            <p>
+                To update to new version of the worksuite follow these steps in sequence.
+
+                <ol>
+                    <li>Take back up of your files and database before updating.</li>
+                    <li>Replace all the files and folders except the <code><strong>.env, public/storage</strong></code>
+                    </li>
+                    <li>After replacing the files go to this link
+                        <code><strong>http://www.yourdomain.com/update-database</strong></code></li>
+                    <li>You should see a database update success message.</li>
+                    <li>Login to see the new version.</li>
+                </ol>
+            </p>
+
+
+
+        </section>
+
+        <section id="stripe">
+            <div class="page-header">
+                <h3>Stripe Settings</h3>
+                <hr class="notop">
+            </div>
+            <ol>
+                <li>Create plans on stripe and set recurring payments and then put that plan id in packages table. </li>
+                <li>Create a webhook for eaxmple "www.example.com/save-invoices" on stripe. </li>
+                <li>Domain can be anything but "/save-invoices" is important. </li>
+                <li>Select event "invoice.payment_failed" and "invoice.payment_succeeded" while creating webhook. </li>
+            </ol>
+            <p>
+                Update the values in .env file for following<br><br>
+
+                STRIPE_KEY=<br>
+                STRIPE_SECRET=<br>
+                STRIPE_WEBHOOK_SECRET=
+            </p>
+
+
+
+        </section>
+
+        <section id="social">
+            <div class="page-header">
+                <h3>Social Login</h3>
+                <hr class="notop">
+            </div>
+            <ol>
+                <li>Create plans on stripe and set recurring payments and then put that plan id in packages table. </li>
+                <li>Create a webhook for eaxmple "www.example.com/save-invoices" on stripe. </li>
+                <li>Domain can be anything but "/save-invoices" is important. </li>
+                <li>Select event "invoice.payment_failed" and "invoice.payment_succeeded" while creating webhook. </li>
+            </ol>
+            <p>
+                Update the values in .env file for following<br><br>
+
+                STRIPE_KEY=<br>
+                STRIPE_SECRET=<br>
+                STRIPE_WEBHOOK_SECRET=
+            </p>
+
+
+
+        </section>
+
+    </div>
+
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+
+
+    <script src="assets/js/jquery.js"></script>
+
+    <script>
+        $("#documenter_nav li a").click(function () {
+            var id = $(this).attr('href');
+            $('#documenter_nav').find('.current').removeClass('current');
+            $(this).addClass('current');
+            $('html, body').animate({
+                scrollTop: $(id).offset().top
+            }, 2000);
+        });
+    </script>
+
+
+</body>
+
+</html>

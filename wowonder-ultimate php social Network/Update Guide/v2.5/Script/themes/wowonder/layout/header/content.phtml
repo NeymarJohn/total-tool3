@@ -1,0 +1,211 @@
+<div class="navbar navbar-default navbar-fixed-top">
+	<nav class="header-fixed1000">
+		<div class="container-fluid">
+			<div class="wow_hdr_innr_left">
+				<a class="brand header-brand" href="<?php echo $wo['config']['site_url']; ?>">
+					<img width="130" src="<?php echo $wo['config']['theme_url'];?>/img/logo.<?php echo $wo['config']['logo_extension'];?>" alt="<?php echo $wo['config']['siteName'];?> Logo"/>
+				</a>
+				<?php if ($wo['loggedin'] == true) { ?>
+					<ul class="nav navbar-nav">
+						<li>
+							<a class="sixteen-font-size" href="<?php echo $wo['config']['site_url']; ?>" data-ajax="?index.php?link1=home">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M19 21H5a1 1 0 0 1-1-1v-9H1l10.327-9.388a1 1 0 0 1 1.346 0L23 11h-3v9a1 1 0 0 1-1 1zm-6-2h5V9.157l-6-5.454-6 5.454V19h5v-6h2v6z" fill="currentColor"/></svg>
+							</a>
+						</li>
+						<?php if ($wo['config']['user_ads'] == 1 || Wo_CanBlog() == true || $wo['config']['events'] == 1 || $wo['config']['groups'] == 1 || $wo['config']['pages'] == 1) {  ?>
+							<li class="dropdown head_name_links">
+								<a href="#" class="dropdown-toggle sixteen-font-size btn-main" data-toggle="dropdown" role="button" aria-expanded="false">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M11 11V7h2v4h4v2h-4v4h-2v-4H7v-2h4zm1 11C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" fill="currentColor"/></svg>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="hide_fill_svg"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11H7v2h4v4h2v-4h4v-2h-4V7h-2v4z" fill="currentColor"/></svg>
+								</a>
+								<ul class="dropdown-menu clearfix create_head_menu toleft" role="menu">
+									<?php if ($wo['config']['user_ads'] == 1) { ?>
+									<li>
+										<a href="<?php echo Wo_SeoLink('index.php?link1=create-ads'); ?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#9c27b0" d="M12,8H4A2,2 0 0,0 2,10V14A2,2 0 0,0 4,16H5V20A1,1 0 0,0 6,21H8A1,1 0 0,0 9,20V16H12L17,20V4L12,8M21.5,12C21.5,13.71 20.54,15.26 19,16V8C20.53,8.75 21.5,10.3 21.5,12Z" /></svg> <?php echo $wo['lang']['create_ad'] ?></a>
+									</li>
+									<?php } ?>
+									<?php if (Wo_CanBlog() == true) { ?>
+									<li>
+										<a href="<?php echo Wo_SeoLink('index.php?link1=create-blog');?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#009da0" d="M18,20H6V18H4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V18H18V20M14,2H6A2,2 0 0,0 4,4V12H6V4H14V8H18V12H20V8L14,2M11,16H8V14H11V16M16,16H13V14H16V16M3,14H6V16H3V14M21,16H18V14H21V16Z" /></svg> <?php echo $wo['lang']['create_blog'] ?></a>
+									</li>
+									<?php } ?>
+									<?php if ($wo['config']['events'] == 1) { ?>
+									<li>
+										<a href="<?php echo Wo_SeoLink('index.php?link1=create-event');?>"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#f25e4e" d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" /></svg> <?php echo $wo['lang']['create_event'] ?></a>
+									</li>
+									<?php } ?>
+									<?php if ($wo['config']['groups'] == 1) { ?>
+									<li>
+										<a href="<?php echo Wo_SeoLink('index.php?link1=create-group'); ?>" data-ajax="?link1=create-group"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#03A9F4" d="M12,6A3,3 0 0,0 9,9A3,3 0 0,0 12,12A3,3 0 0,0 15,9A3,3 0 0,0 12,6M6,8.17A2.5,2.5 0 0,0 3.5,10.67A2.5,2.5 0 0,0 6,13.17C6.88,13.17 7.65,12.71 8.09,12.03C7.42,11.18 7,10.15 7,9C7,8.8 7,8.6 7.04,8.4C6.72,8.25 6.37,8.17 6,8.17M18,8.17C17.63,8.17 17.28,8.25 16.96,8.4C17,8.6 17,8.8 17,9C17,10.15 16.58,11.18 15.91,12.03C16.35,12.71 17.12,13.17 18,13.17A2.5,2.5 0 0,0 20.5,10.67A2.5,2.5 0 0,0 18,8.17M12,14C10,14 6,15 6,17V19H18V17C18,15 14,14 12,14M4.67,14.97C3,15.26 1,16.04 1,17.33V19H4V17C4,16.22 4.29,15.53 4.67,14.97M19.33,14.97C19.71,15.53 20,16.22 20,17V19H23V17.33C23,16.04 21,15.26 19.33,14.97Z" /></svg> <?php echo $wo['lang']['create_group'] ?></a>
+									</li>
+									<?php } ?>
+									<?php if ($wo['config']['pages'] == 1) { ?>
+									<li>
+										<a href="<?php echo Wo_SeoLink('index.php?link1=create-page'); ?>" data-ajax="?link1=create-page"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#f79f58" d="M14.4,6L14,4H5V21H7V14H12.6L13,16H20V6H14.4Z" /></svg> <?php echo $wo['lang']['create_page'] ?></a>
+									</li>
+									<?php } ?>
+								</ul>
+							</li>
+						<?php } ?>
+					</ul>
+				<?php } ?>
+			</div>
+        <ul class="nav navbar-nav">
+          <li class="dropdown search-container">
+            <form class="navbar-form navbar-left col-lg-12 form-group" data-toggle="dropdown" role="button" id="navbar-searchbox" role="search">
+              <div class="form-group inner-addon <?php echo Wo_RightToLeft('left-addon');?> ">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather main-color feather-search glyphicon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" class="form-control search-input" onkeyup="Wo_DetectSearchType(this.value), document.getElementById('wo_repeat_search').innerHTML = escapeHtml(this.value)" placeholder="<?php echo $wo['lang']['search_header_label']; ?>" dir="auto" <?php if ($wo['loggedin'] == true) { echo 'onfocus="Wo_GetRecentSearchs()"';}?>>
+              </div>
+            </form>
+            <ul class="dropdown-menu search-dropdown-container" style="margin-left:7px;" role="menu">
+              <div class="search-dropdown-result">
+                <?php
+                if ($wo['loggedin'] == true) {
+                  foreach (Wo_GetRecentSerachs() as $wo['result']) {
+                    if (!empty($wo['result'])) {
+                      echo Wo_LoadPage('header/search');
+                    }
+                  }
+                }
+                
+                ?>
+              </div>
+              <li>
+                <span class="search-advanced-container">
+                  <a href="<?php echo Wo_SeoLink('index.php?link1=search');?>" class="search-advanced-link" data-ajax="?link1=search">
+                    <div class="feather-svg-parent">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+					</div>
+					<span style="vertical-align: middle;display: table-cell;padding-left: 10px;">
+						<?php echo $wo['lang']['advanced_search']; ?> 
+						<span id="wo_repeat_search"></span>
+					</span>
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <?php
+        if ($wo['loggedin'] == true) {
+        echo Wo_LoadPage('header/loggedin-header');
+        } else {
+        echo Wo_LoadPage('header/main-header');
+        }
+        ?>
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="loader"></div>
+<script type="text/javascript">
+
+jQuery(document).ready(function($) {
+  $(".search-input").keydown(function(event) {
+    if (event.keyCode == 13 && event.shiftKey == 0) {
+      event.preventDefault();
+      window.location = '<?php echo Wo_SeoLink('index.php?link1=search?query=');?>' + $(this).val();
+    }
+  });
+});
+var Searchcontainer = $('.search-container');
+var SearchBox = $('.search-container .search-input');
+var SearchResult = $('.search-dropdown-result');
+
+function Wo_ChangeHomeButtonIcon() {
+
+  $('.navbar-home #home-button').html('<i class="fa fa-circle-o-notch fa-spin"></i>');
+}
+  
+function Wo_DetectSearchType(query) {
+  var Hash = smokeTheHash(query);
+  if (Hash) {
+    $('.search-advanced-container').hide(200);
+    Wo_SearchhashResult(query);
+  } else {
+    $('.search-advanced-container').fadeIn(200);
+    Wo_SearchResult(query);
+  }
+}
+
+function Wo_ClearSearches() {
+  $('.clear-searches').html('<i class="fa fa-spinner fa-spin"></i>');
+   $.get(Wo_Ajax_Requests_File(), {f: 'clearChat'}, function(data) {
+        if (data.status == 200) {
+           location.reload();
+        }
+   });
+}
+
+function Wo_GetRecentSearchs() {
+  $.get(Wo_Ajax_Requests_File(), {f: 'search', s: 'recent'}, function(data) {
+      if (data.status == 200) {
+          if (data.html.length > 0) {
+            SearchResult.html('<div class="recent"><div class="gray recent-searches <?php echo Wo_RightToLeft("pull-left");?>"> <?php echo $wo["lang"]["recent_searches"]?></div><div onclick="Wo_ClearSearches();" class="gray recent-searches clear-searches pointer <?php echo Wo_RightToLeft("pull-right");?>" style="color: #F44336;"><svg style="vertical-align: middle;margin-top: -3px;" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><?php echo $wo["lang"]["clear"]?></div><div class="clear"></div></div>' + data.html);
+          }
+        }
+  });
+}
+function Wo_SearchResult(query) {
+    if (SearchBox.val() != '') {
+      Wo_progressIconLoader(Searchcontainer.find('.navbar-form'));
+      Searchcontainer.addClass('open');
+      Searchcontainer.find('.search-advanced-link').attr('href','<?php echo Wo_SeoLink("index.php?link1=search&query=")?>' + query);
+      Searchcontainer.find('.search-advanced-link').attr('data-ajax','<?php echo Wo_SeoLink("?link1=search&query=")?>' + query);
+      $.get(Wo_Ajax_Requests_File(), {f: 'search', s: 'normal', query: query}, function(data) {
+        if (data.status == 200) {
+          if (data.html.length == 0) {
+            SearchResult.html('<span class="center-text">' + " <?php echo $wo['lang']['no_result']; ?>" + '<span>');
+          } else {
+            SearchResult.html(data.html);
+          }
+        }
+        Wo_progressIconLoader(Searchcontainer.find('.navbar-form'));
+      });
+      $(document).click(function() {
+        Searchcontainer.removeClass('open');
+      });
+    } else {
+      Searchcontainer.removeClass('open');
+    }
+}
+
+
+function Wo_SearchhashResult(query) {
+    var Searchcontainer = $('.search-container');
+    var SearchBox = $('.search-container .search-input');
+    var SearchResult = $('.search-dropdown-result');
+    if (SearchBox.val() != '') {
+      Wo_progressIconLoader(Searchcontainer.find('.navbar-form'));
+      Searchcontainer.addClass('open');
+      Searchcontainer.find('.search-advanced-link').attr('href','<?php echo Wo_SeoLink("index.php?link1=search&query=")?>' + query);
+      Searchcontainer.find('.search-advanced-link').attr('data-ajax','<?php echo Wo_SeoLink("?link1=search&query=")?>' + query);
+      $.get(Wo_Ajax_Requests_File(), {f: 'search', s: 'hash', query: query}, function(data) {
+        if (data.status == 200) {
+          if (data.html.length == 0) {
+            SearchResult.html('<span class="center-text">' + " <?php echo $wo['lang']['no_result']; ?>" + '<span>');
+          } else {
+            SearchResult.html(data.html);
+          }
+        }
+        Wo_progressIconLoader(Searchcontainer.find('.navbar-form'));
+      });
+
+      $(document).click(function() {
+        Searchcontainer.removeClass('open');
+      });
+    } else {
+      Searchcontainer.removeClass('open');
+    }
+}
+
+function smokeTheHash(str) {
+  var n = str.search("#");
+  if(n != "-1"){
+    return true;
+  } else {
+    return false;
+  }
+}
+</script>

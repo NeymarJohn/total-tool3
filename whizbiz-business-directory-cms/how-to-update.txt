@@ -1,0 +1,64 @@
+1. If you dont make any customization on any files then Just upload the zip from admin panel > upload and click "upload & install button"
+
+or if you want to install the update manually
+
+1. Replace ROOT/application directory with application directory [Merge and replace]
+2. Replace ROOT/dbc_config directory with dbc_config directory [Merge and replace]
+3. Replace ROOT/system directory with system directory [Merge and replace]
+
+NB: Please create a sql backup before update. Also if any custom work is done on you script then please
+replace files carefully so that your custom works do not loose. If possible take a file backup also.
+
+The update pack contains css files , view files , language files. So please take backup before doing anything.
+
+Please don't replace ROOT/application/config/business_directory.php file. Just compare it with
+updated file and add the lines which are not there.
+
+************************************************************
+--------------------IMPORTANT NOTICE -----------------------
+
+If you are using version 1.2 and wants to update to 1.3 or more then please follow the instructions very carefully
+
+1. First take a backup of your old database. This is really important becasue version 1.3 contains some databse change
+2. Once you updated the files like described on top, then login to your admin panel
+3. Now open a new tab and go to this url http://yourdomain.com/index.php/en/admin/business/migrate_address
+4. Replace yourdomain.com with your actual site address
+
+************************************************************
+************************************************************
+##################################################
+#####  Special instructions for version 2.1  #####
+##################################################
+We've added two new config on version 2.1. For adding those config to your existing site just edit
+ROOT/application/config/business_directory.php file and add the following lines at the end
+$config['search_url_separator'] = '+';
+$config['plain_text_search_full_word_matching'] = 'Yes';//set it Yes or No
+
+##################################################
+#####  Special instructions for version 1.9  #####
+##################################################
+Once the files are updates you will get a link "Migrate 1.9" under Admin panel > system. Click that link. it will add
+a new email template to your database that will be used for user notification after their post got approved.
+
+---------------------------------------------------------------------------
+Add the following lines on ROOT/application/config/business_directory.php
+
+//added on version 1.9
+$config['hide_report_business_link'] = 'Yes'; // set it 'Yes' if want to hide
+$config['hide_claim_business_link'] = 'Yes'; // set it 'Yes' if want to hide
+
+$config['send_admin_email_user_signup'] = 'No'; // set 'Yes' if you want to send admin an email after each user signup
+$config['send_email_after_post_published'] = 'No'; // set 'Yes' if you want to send users an email after their post get published
+
+---------------------------------------------------------------------------
+Add the following lines on ROOT/application/config/routes.php
+
+//added on version 1.9
+$route['(:any)/blog-posts/(:any)'] = "(:any)/show/post/blog/$2";
+$route['(:any)/news-posts/(:any)'] = "(:any)/show/post/news/$2";
+$route['(:any)/article-posts/(:any)'] = "(:any)/show/post/article/$2";
+$route['(:any)/post-detail/(:any)'] = "(:any)/show/postdetail/$2/$3";
+//end
+
+---------------------------------------------------------------------------
+If you want to translate the datepicker then follow the below steps http://support.webhelios.com/index.php/en/show/faqdetail/33/How-to-translate-the-datepicker

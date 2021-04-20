@@ -1,0 +1,141 @@
+.logo img {
+    max-height: 30px;
+    display: inline-block;
+    line-height: 60px;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.white-box{
+    border-radius: 8px;
+}
+
+#footer-sticky-notes{
+    border-radius: 8px 8px 0 0;
+}
+
+/* table css changes */
+.table>tbody>tr>td {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.table>thead>tr>th {
+    border-left: none !important;
+    border-right: none !important;
+}
+.table {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.panel, .client-feedbacks{
+    border-radius: 6px;
+}
+
+.panel-default .panel-heading, .panel-white .panel-heading, .panel-black .panel-heading, .panel-inverse .panel-heading, .panel-blue .panel-heading, .panel-info .panel-heading {
+    /* border-radius: 6px 6px 0 0; */
+    border-radius: 0;
+}
+
+.btn {
+    border-radius: 3px;
+}
+
+.btn-circle {
+    border-radius: 15px;
+}
+
+.pagination>li:first-child>a, .pagination>li:first-child>span {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.pagination>li:last-child>a, .pagination>li:last-child>span {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.form-control {
+    border-radius: 4px;
+}
+
+.select2-container-multi .select2-choices {
+    border-radius: 4px !important;
+    border: 1px solid #e4e7ea;
+}
+
+.modal-content {
+    border-radius: 6px;
+}
+
+.login-box {
+    border-radius: 6px;
+}
+
+.panel, .bg-theme-dark {
+    border-radius: 6px;
+}
+
+.dropdown .dropdown-menu {
+    border-radius: 0 0 8px 8px;   
+}
+
+.dropup .dropdown-menu {
+    border-radius: 8px 8px 0 0;   
+}
+
+.mailbox {
+    max-height: 350px;
+    overflow-y: auto;
+    border-radius: 0 0 8px 8px;
+}
+
+.lobipanel .panel-body, .lobipanel-placeholder {
+    border-radius: 8px;
+}
+
+.fc th.fc-widget-header:first-child {
+    border-top-left-radius: 8px;
+}
+
+.fc th.fc-widget-header:last-child {
+    border-top-right-radius: 8px;
+}
+
+
+.progress {
+    height: 6px;
+    border-radius: 6px;
+}
+
+.alert {
+    border-radius: 4px;
+}
+
+.submit-ticket .btn {
+    border-radius: 50%;
+}
+
+.input-daterange .form-control:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.input-daterange .form-control:last-child {
+    border-radius: 0 4px 4px 0;
+}
+.gantt_container{
+    border-radius: 6px;
+}
+
+.datepicker {
+    border-radius: 8px;
+}
+
+.vtabs .tabs-vertical {
+    border-right: 1px solid #f2f2f3;
+}
+
+.border-radius {
+    border-radius: 6px;
+}

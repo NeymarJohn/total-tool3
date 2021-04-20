@@ -1,0 +1,304 @@
+<style>
+.content-container {width: 100%;padding: 0;}
+footer, footer .footer-wrapper, .second-footer {display: none}
+</style>
+
+<div class="video-con wow_go_live_cont">
+	<div class="container">
+		<div id="remote-media">
+			<div class="liv_vid_cont"></div>
+			<h3><i class="fa fa-spin fa-spinner"></i> <?php echo $wo['lang']['please_wait']?></h3>
+			<div class="wow_liv_counter"><span id="live_word"><?php echo $wo['lang']['live']; ?></span> <span id="live_count"> 0</span></div>
+			<div id="live_post_comments" class="wow_liv_comments_feed"></div>
+		</div>
+		<a class="btn btn-mat end_vdo_call wow_end_live_btn hidden" href="<?php echo($wo['config']['site_url']) ?>" onclick="DeleteLive()">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z" /></svg> <?php echo $wo['lang']['end_live']; ?>
+		</a>
+		<button class="btn btn-mat btn-success start_vdo_call wow_go_live_btn" id="publishBtn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M17,14.5V11A1,1 0 0,0 16,10H4A1,1 0 0,0 3,11V21A1,1 0 0,0 4,22H16A1,1 0 0,0 17,21V17.5L21,21.5V10.5M3,3.86L4.4,5.24C7.5,2.19 12.5,2.19 15.6,5.24L17,3.86C13.14,0.05 6.87,0.05 3,3.86M5.8,6.62L7.2,8C8.75,6.5 11.25,6.5 12.8,8L14.2,6.62C11.88,4.34 8.12,4.34 5.8,6.62Z" /></svg> <?php echo $wo['lang']['go_live']; ?></button>
+	</div>
+	<input type="hidden" id="live_post_id">
+</div>
+
+<script>
+setInterval(function(){ 
+  data = {};
+  for (var i = 0; i < $('.live_comments').length; i++) {
+    if ($($('.live_comments')[i]).attr('live_comment_id')) {
+      data[i] = $($('.live_comments')[i]).attr('live_comment_id');
+    }
+  }
+  post_id = $('#live_post_id').val();
+  $.post(Wo_Ajax_Requests_File() + "?f=live&s=check_comments", {post_id: post_id,ids:data,page:'live'}, function(data, textStatus, xhr) {
+    if (data.status == 200) {
+      $('#live_post_comments').append(data.html);
+      $('#live_count').html(data.count);
+      $('#live_word').html(data.word);
+      var comments = $('#live_post_comments .live_comments');
+      if (comments.length > 4) {
+        var i;
+        for (i = 0; i < comments.length; i++) {
+          if ($('#live_post_comments .live_comments').length > 4) {
+            comments[i].remove();
+          }
+        }
+      }
+    }
+  });
+}, 3000);
+function DeleteLive() {
+  post_id = $('#live_post_id').val();
+  $.post(Wo_Ajax_Requests_File() + "?f=live&s=delete", {post_id: post_id}, function(data, textStatus, xhr) {});
+}
+
+
+
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+if (!navigator.getUserMedia) {
+  $('#remote-media h3').text('Sorry, WebRTC is not available in your browser.');
+}
+
+let token = '<?php echo($wo['config']['live_token']) ?>';
+let streamName = 'stream_<?php echo($wo['user']['id']."_".rand(1111111,9999999)); ?>';
+let accountId = '<?php echo($wo['config']['live_account_id']) ?>';
+const apiPath = 'https://director.millicast.com/api/director/publish';
+const turnUrl = 'https://turn.millicast.com/webrtc/_turn';
+
+function updateMillicastAuth() {
+  return new Promise((resolve, reject) => {
+    let xhr                = new XMLHttpRequest();
+    xhr.onreadystatechange = function (evt) {
+      if (xhr.readyState == 4) {
+        let res = JSON.parse(xhr.responseText);
+        switch (xhr.status) {
+          case 200:
+            let d = res.data;
+            jwt   = d.jwt;
+            url   = d.urls[0];
+            resolve(d);
+            break;
+          default:
+            reject(res);
+        }
+      }
+    }
+    xhr.open("POST", apiPath, true);
+    xhr.setRequestHeader("Authorization", `Bearer ${token}`);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify({streamName: streamName}));
+  });
+}
+
+function getMedia() {
+  return new Promise((resolve, reject) => {
+    /*
+    //getusermedia constraints
+    let constraints = {
+      audio:true,
+      video: {
+        width:  { min: 640, max: 1920, ideal: 1280 },
+        height: { min: 480, max: 1080, ideal: 720 },
+        frameRate: { min: 10, max: 60, ideal: 24 },
+        advanced: [
+          // additional constraints go here, tried in order until something succeeds
+          // can attempt high level exact constraints, slowly falling back to lower ones
+          { aspectRatio: 16/9 },
+          { aspectRatio:  4/3 },
+        ]
+      }
+    } */
+
+    let constraints = {audio: true, video: true};
+    navigator.mediaDevices.getUserMedia(constraints)
+      .then(str => {
+        resolve(str);
+		$('#remote-media h3').addClass('hidden');
+        $('#remote-media .liv_vid_cont').html('<video id="basic-stream" class="hidden videostream" autoplay="" style="width: 100%;height: 100%;vertical-align: middle;"></video>');
+      }).catch(err => {
+      $('#remote-media h3').text('Could not get Media: '+err);
+      reject(err);
+    })
+  });
+}
+
+function getICEServers() {
+  return new Promise((resolve, reject) => {
+    let xhr                = new XMLHttpRequest();
+    xhr.onreadystatechange = function (evt) {
+      if (xhr.readyState == 4) {
+        let res = JSON.parse(xhr.responseText), a;
+        switch (xhr.status) {
+          case 200:
+            //returns array.
+            if (res.s !== 'ok') {
+              a = [];
+              //failed to get ice servers, resolve anyway to connect w/ out.
+              resolve(a);
+              return
+            }
+            let list = res.v.iceServers;
+            a        = [];
+            //call returns old format, this updates URL to URLS in credentials path.
+            list.forEach(cred => {
+              let v = cred.url;
+              //console.log('cred:',cred);
+              if (!!v) {
+                cred.urls = v;
+                delete cred.url;
+              }
+              a.push(cred);
+            });
+            //console.log('ice: ',a);
+            resolve(a);
+            break;
+          default:
+            a = [];
+            //failed to get ice servers, resolve anyway to connect w/ out.
+            resolve(a);
+            break;
+        }
+      }
+    }
+    xhr.open("PUT", turnUrl, true);
+    xhr.send();
+  })
+}
+
+function connect() {
+
+    if (token && !url || token && !jwt) {
+      updateMillicastAuth()
+        .then(d => {
+          connect();
+        })
+        .catch(e => {
+          alert("Error: The API encountered an problem!", e);
+        });
+      return;
+    }
+
+    //create Peer connection object, add TURN servers for fallback.
+    let pc = new RTCPeerConnection({iceServers: iceServers, bundlePolicy: "max-bundle"});
+    //add media to connection
+    stream.getTracks()
+      .forEach(track => {
+        pc.addTrack(track, stream)
+      });
+
+    //connect with Websockets for handshake to media server.
+    let ws    = new WebSocket(url + '?token=' + jwt);//token
+    ws.onopen = function () {
+      //Connect to our media server via WebRTC
+      //create a WebRTC offer to send to the media server
+      let offer = pc.createOffer({
+                                   offerToReceiveAudio: true,
+                                   offerToReceiveVideo: true
+                                 }).then(desc => {
+        //set local description and send offer to media server via ws.
+        pc.setLocalDescription(desc)
+          .then(() => {
+            //set required information for media server.
+            let data    = {
+              name:  streamName,
+              sdp:   desc.sdp,
+              codec: 'h264'
+            }
+            //create payload
+            let payload = {
+              type:    "cmd",
+              transId: Math.random() * 10000,
+              name:    'publish',
+              data:    data
+            }
+            ws.send(JSON.stringify(payload));
+          })
+          .catch(e => {
+            alert('setLocalDescription failed: ', e);
+          })
+      }).catch(e => {
+        alert('createOffer Failed: ', e);
+      });
+    }
+
+    ws.addEventListener('message', evt => {
+      let msg = JSON.parse(evt.data);
+      switch (msg.type) {
+        //Handle counter response coming from the Media Server.
+        case "response":
+          let data   = msg.data;
+          let answer = new RTCSessionDescription({
+                                                   type: 'answer',
+                                                   sdp:  data.sdp + "a=x-google-flag:conference\r\n"
+                                                 });
+
+          pc.setRemoteDescription(answer)
+            .then(d => {
+              console.log('setRemoteDescription Success! ');
+              $('#publishBtn').removeAttr('disabled');
+              $('#publishBtn').text("<?php echo($wo['lang']['please_wait']); ?>");
+              $('#publishBtn').addClass('hidden');
+              $('.end_vdo_call').removeClass('hidden');
+              $.post(Wo_Ajax_Requests_File() + "?f=live&s=create", {stream_name: streamName}, function(data, textStatus, xhr) {
+                if (data.status == 200) {
+                  $('#live_post_id').val(data.post_id);
+                }
+              });
+            })
+            .catch(e => {
+              alert('setRemoteDescription failed: ', e);
+            });
+          break;
+      }
+    })
+}
+
+function startBroadcast() {
+  $('#publishBtn').attr('disabled', 'true');
+  $('#publishBtn').text("<?php echo($wo['lang']['please_wait']); ?>");
+  // get a list of Xirsys ice servers.
+  getICEServers()
+    .then(list => {
+      iceServers = list;
+      //ready to connect.
+      connect();
+    })
+    .catch(e => {
+      alert('getICEServers Error: ', e);
+      connect();//proceed with no (TURN)
+    });
+}
+
+function ready() {
+  //sets required data to broadcast and view.
+  updateMillicastAuth();
+
+  //Setup publish button
+  let pubBtn = document.getElementById('publishBtn');
+  if (pubBtn) {
+    pubBtn.onclick = evt => {
+      startBroadcast();
+    };
+  }
+
+  //Get users camera and mic
+  getMedia()
+    .then(str => {
+      stream     = str;
+      //set cam feed to video window so user can see self.
+      let vidWin = document.getElementsByTagName('video')[0];
+      if (vidWin) {
+
+        $('#basic-stream').removeClass('hidden');
+        //$('.end_vdo_call').removeClass('hidden');
+        vidWin.srcObject = stream;
+        //startBroadcast();
+      }
+    })
+    .catch(e => {
+      $('#remote-media').html('<div class="empty_state"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="feather"><path d="M3.27,2L2,3.27L4.73,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16C16.2,18 16.39,17.92 16.54,17.82L19.73,21L21,19.73M21,6.5L17,10.5V7A1,1 0 0,0 16,6H9.82L21,17.18V6.5Z" fill="currentColor"></path></svg> getUserMedia Error: '+e+'</div>');
+    });
+}
+
+if (navigator.getUserMedia) {
+  ready();
+}
+</script>

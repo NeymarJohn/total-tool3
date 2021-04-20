@@ -1,0 +1,57 @@
+{
+    "name": "@yaireo/tagify",
+    "version": "2.12.0",
+    "homepage": "https://github.com/yairEO/tagify",
+    "description": "Convert an input field into a Tags element. Easy, customizable, with good performance and small code footprint.",
+    "_npmUser": {
+        "name": "vsync",
+        "email": "vsync.design@gmail.com"
+    },
+    "scripts": {
+        "test": "jest"
+    },
+    "author": {
+        "name": "Yair Even-Or",
+        "email": "vsync.design@gmail.com"
+    },
+    "main": "./dist/tagify.min.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yairEO/tagify.git"
+    },
+    "bugs": {
+        "url": "https://github.com/yaireo/tagify/issues"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.1.5",
+        "@babel/preset-env": "^7.1.5",
+        "babel-core": "^6.26.3",
+        "babel-jest": "^23.6.0",
+        "babel-preset-env": "^1.7.0",
+        "beepbeep": "^1.2.2",
+        "gulp": "^3.9.1",
+        "gulp-autoprefixer": "6.0.0",
+        "gulp-babel": "^8.0.0",
+        "gulp-cached": "^1.1.1",
+        "gulp-clean-css": "^3.10.0",
+        "gulp-combine-mq": "^0.4.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-css-globbing": "^0.2.2",
+        "gulp-eslint": "^5.0.0",
+        "gulp-insert": "^0.5.0",
+        "gulp-load-plugins": "^1.5.0",
+        "gulp-rename": "^1.4.0",
+        "gulp-replace": "^1.0.0",
+        "gulp-sass": "^4.0.2",
+        "gulp-sourcemaps": "^2.6.4",
+        "gulp-uglify": "^3.0.1",
+        "gulp-umd": "^2.0.0",
+        "gulp-util": "^3.0.8",
+        "gulp-watch": "^5.0.1",
+        "jest": "^23.6.0",
+        "jsdom": "^13.0.0",
+        "path": "^0.12.7",
+        "run-sequence": "^2.2.1",
+        "puppeteer": "^1.10.0"
+    }
+}

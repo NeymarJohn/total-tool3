@@ -1,0 +1,25 @@
+<tr class="setting-verificationlist" id="VerificationID_<?php echo $wo['verification']['id']?>" >
+   <td><?php echo $wo['verification']['id']?> </td>
+   <td>
+      <a href="<?php echo $wo['verification']['user_data']['url']; ?>">
+      <img src="<?php echo $wo['verification']['user_data']['avatar']?>" class="setting-avatar" alt="<?php echo $wo['verification']['user_data']['name']; ?> Profile Picture">
+      <?php echo $wo['verification']['user_data']['name']; ?>
+      </a>
+         <span class="pointer toggle-verification-request" onclick="Wo_ToggleVerfRequest(<?php echo $wo['verification']['id']; ?>,this)">
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+         </span>
+   </td>
+   <td><?php echo ($wo['verification']['status'] == 1) ? '<span class="label label-success">' . $wo['lang']['active'] . '</span>': '<span class="label label-danger">' . $wo['lang']['pending'] . '</span>';?></td>
+   <td>
+      <button onclick="Wo_ApproveRefund(<?php echo $wo['verification']['id']; ?>)" type="button" class="btn btn-success waves-effect waves-light">APPROVE</button>
+      <button onclick="Wo_DeleteRefund(<?php echo $wo['verification']['id']; ?>)" type="button" class="btn btn-danger waves-effect waves-light">DELETE</button>
+   </td>
+</tr>
+   <tr id="review-verif-request-info-<?php echo $wo['verification']['id']; ?>" style="display: none;">
+      <td colspan="4">
+         <div class="review-verif-request-cont">
+            <h4><?php echo $wo['verification']['type_name']; ?></h4>
+            <p><?php echo $wo['verification']['description']; ?></p>
+         </div>
+      </td>
+   </tr>

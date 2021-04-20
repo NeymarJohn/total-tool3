@@ -1,0 +1,55 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 12/11/2019 06:02
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff2") format("woff2"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+}
+
+    .flaticon-business:before { content: "\f100"; }
+    .flaticon-bill:before { content: "\f101"; }
+    .flaticon-pay:before { content: "\f102"; }
+    .flaticon-expensive:before { content: "\f103"; }
+    .flaticon-problem:before { content: "\f104"; }
+    .flaticon-email:before { content: "\f105"; }
+    .flaticon-ban:before { content: "\f106"; }
+    .flaticon-check-mark-button:before { content: "\f107"; }
+    .flaticon-security:before { content: "\f108"; }
+    .flaticon-feature:before { content: "\f109"; }
+    .flaticon-customer-support:before { content: "\f10a"; }
+    .flaticon-support:before { content: "\f10b"; }
+    .flaticon-placeholder:before { content: "\f10c"; }
+    .flaticon-message:before { content: "\f10d"; }
+    .flaticon-call:before { content: "\f10e"; }
+    .flaticon-briefing:before { content: "\f10f"; }
+    .flaticon-analytics:before { content: "\f110"; }
+    .flaticon-collaboration:before { content: "\f111"; }
+    .flaticon-stopwatch:before { content: "\f112"; }
+    .flaticon-discuss-issue:before { content: "\f113"; }
+    .flaticon-home:before { content: "\f114"; }
+    .flaticon-responsive:before { content: "\f115"; }
+    .flaticon-tools:before { content: "\f116"; }
+    .flaticon-computer:before { content: "\f117"; }
+    .flaticon-web-programming:before { content: "\f118"; }
+    .flaticon-file:before { content: "\f119"; }
+    .flaticon-update:before { content: "\f11a"; }
+    .flaticon-calendar:before { content: "\f11b"; }

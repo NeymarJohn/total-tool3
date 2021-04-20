@@ -1,0 +1,45 @@
+<div class="group-messages-wrapper messages-wrapper <?php echo ($wo['chatMessage']['onwer']) ? 'pull-right' : 'pull-left';?>" id="messageId_<?php echo $wo['chatMessage']['id'] ?>" data-page-tmessage-id="<?php echo $wo['chatMessage']['id'] ?>" style="color: #333;">
+
+   <div class="message <?php echo ($wo['chatMessage']['onwer']) ? 'outgoing pull-right' : 'incoming pull-left';?>">
+     
+
+      <?php if (!empty($wo['chatMessage']['text'])): ?>
+      <p class="" dir="auto">
+         <?php if($wo['chatMessage']['type_two'] == 'contact'): 
+         $json = json_decode(trim(htmlspecialchars_decode($wo['chatMessage']['text'])), true);
+         echo $json['Value'] . ' (' . $json['Key'] . ')';
+         ?>
+
+         <?php else: ?>
+            <?php echo $wo['chatMessage']['text']; ?>
+         <?php endif;?>
+      </p>
+      <?php endif; ?>
+      <div class="clear"></div>
+      <div class="message-media" style="max-width: 100%; overflow: hidden;">
+         <?php  
+         if(isset($wo['chatMessage']['media']) && !empty($wo['chatMessage']['media'])) {
+            $media = array('type' => 'chatMessage', 'storyId' => $wo['chatMessage']['id'], 'filename' => $wo['chatMessage']['media'], 'name' => $wo['chatMessage']['mediaFileName']); 
+            echo Wo_DisplaySharedFile($media, 'chat');   
+         } 
+         ?>
+
+         <?php if (!empty($wo['chatMessage']['stickers'])): ?>
+            <?php if (strpos('.mp4', $wo['chatMessage']['stickers'])) { ?>
+            <video autoplay loop><source src="<?php echo $wo['chatMessage']['stickers']; ?>" type="video/mp4"></video>
+            <?php } else { ?>
+            <img src="<?php echo $wo['chatMessage']['stickers']; ?>" alt="GIF">
+            <?php } ?>
+         <?php endif; ?>
+         
+      </div>
+   </div>
+
+   <div class="clear"></div>
+   <?php if($wo['chatMessage']['user_data']['user_id'] == $wo['user']['user_id']) { ?>
+      <div class="message-seen text-right message-details"></div>
+      <div class="clear"></div>
+   <?php } ?>
+   <div class="message-typing message-details"></div>
+</div>
+<div class="clear"></div>

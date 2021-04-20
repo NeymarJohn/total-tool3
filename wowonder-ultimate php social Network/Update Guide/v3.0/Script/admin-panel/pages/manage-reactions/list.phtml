@@ -1,0 +1,24 @@
+<tr id="list-<?php echo($wo['reaction_id']) ?>">
+  <td><?php echo($wo['reaction_id']) ?></td>
+  <td id="sub_name_<?php echo($wo['reaction_id']) ?>"><?php echo($wo['reaction_name']) ?></td>
+  <td><?php 
+  if (preg_match("/<[^<]+>/",$wo['reaction_wowonder_icon'],$m)) {
+  	echo($wo['reaction_wowonder_icon']);
+  }
+  else{ ?>
+   <div class="reaction"><img src="<?php echo($wo['reaction_wowonder_icon']) ?>"></div>
+  <?php } ?></td>
+  <td><div class="reaction"><img src="<?php echo($wo['reaction_sunshine_icon']) ?>"></div></td>
+  <td><?php echo ($wo['reaction_status'] == 1) ? '<span class="label label-success">Active</span>': '<span class="label label-danger">Disabled</span>';?></td>
+  <td>
+  	<button class="btn bg-cyan waves-effect waves-light"onclick="EditReaction('<?php echo($wo['reaction_id']) ?>')">EDIT</button>
+  	<?php if ($wo['reaction_status'] == 1) { ?>
+  		<button class="btn btn-danger bg-cyan waves-effect waves-light" onclick="ReactionStatus(this,'<?php echo($wo['reaction_id']) ?>')">Disable</button>
+  	<?php }else{ ?>
+  		<button class="btn btn-success bg-cyan waves-effect waves-light" onclick="ReactionStatus(this,'<?php echo($wo['reaction_id']) ?>')">Enable</button>
+  	<?php } 
+  	if ($wo['reaction_id'] > 6) {?>
+  		<button class="btn btn-primary bg-cyan waves-effect waves-light" onclick="DeleteReaction(this,'<?php echo($wo['reaction_id']) ?>')">Delete</button>
+  	<?php } ?>
+  </td>
+</tr>

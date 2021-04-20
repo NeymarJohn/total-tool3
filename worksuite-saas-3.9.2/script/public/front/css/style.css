@@ -1,0 +1,45 @@
+
+.theme-sections-split .section,
+.theme-sections-split .main-content .topbar,
+.theme-sections-split .main-content .site-footer {
+  margin: 30px 50px 100px;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ebebeb;
+}
+
+.theme-sections-split .main-content .topbar {
+  position: static;
+}
+
+.theme-sections-split .main-content .topbar .topbar-toggler {
+  display: none;
+}
+
+.theme-sections-split .section-info {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding-top: 60px;
+}
+
+.theme-sections-split.topbar-reveal .main-content .topbar-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .theme-sections-split .section,
+  .theme-sections-split .main-content .site-footer {
+    margin: 30px 0 100px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+
+}
+
+/*custom css*/
+
+.topbar-brand img, .site-footer img{
+  max-height: 35px;
+}

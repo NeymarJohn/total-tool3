@@ -1,0 +1,120 @@
+<div class="container-fluid">
+    <div>
+        <h3>NodeJs Settings</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Settings</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">NodeJs Settings</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- Vertical Layout -->
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">NodeJs Settings</h6>
+					<div class="email-settings-alert"></div>
+					<div class="alert alert-info">If you disable NodeJs system, the default ajax system will be enabled for chatting and messaging system.</div>
+                    <form class="email-settings" method="POST">
+                        <label for="node_socket_flow">NodeJs</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="node_socket_flow" id="node_socket_flow-enabled" value="1" <?php echo ($wo['config']['node_socket_flow'] == 1) ? 'checked': '';?>>
+                                <label class="form-check-label" for="node_socket_flow-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="node_socket_flow" id="node_socket_flow-disabled" value="0" <?php echo ($wo['config']['node_socket_flow'] == 0) ? 'checked': '';?>>
+                                <label class="form-check-label" for="node_socket_flow-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <label for="nodejs_ssl">NodeJs SSL Connection <small>(Enable this if you are using your site under SSL)</small>.</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="nodejs_ssl" id="nodejs_ssl-enabled" value="1" <?php echo ($wo['config']['nodejs_ssl'] == 1) ? 'checked': '';?>>
+                                <label class="form-check-label" for="nodejs_ssl-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="nodejs_ssl" id="nodejs_ssl-disabled" value="0" <?php echo ($wo['config']['nodejs_ssl'] == 0) ? 'checked': '';?>>
+                                <label class="form-check-label" for="nodejs_ssl-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">NodeJs HTTP Port</label>
+                                <input type="number" id="nodejs_port" name="nodejs_port" class="form-control" value="<?php echo $wo['config']['nodejs_port']?>">
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">NodeJs HTTPS(SSL) Port</label>
+                                <input type="number" id="nodejs_ssl_port" name="nodejs_ssl_port" class="form-control" value="<?php echo $wo['config']['nodejs_ssl_port']?>">
+                            </div>
+                        </div>
+                       
+                         <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">NodeJs SSL Certificate Key Path (.key) <small>(Only If NodeJS SSL IS enabled)</small></label>
+                                <input type="text" id="nodejs_key_path" name="nodejs_key_path" class="form-control" value="<?php echo $wo['config']['nodejs_key_path']?>">
+                            </div>
+                        </div>
+                         <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">NodeJs SSL Certificate Path (.crt) <small>(Only If NodeJS SSL IS enabled)</small></label>
+                                <input type="text" id="nodejs_cert_path" name="nodejs_cert_path" class="form-control" value="<?php echo $wo['config']['nodejs_cert_path']?>">
+                            </div>
+                        </div>
+                        <hr>
+                        <label for="redis">Redis server</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="redis" id="redis-enabled" value="Y" <?php echo ($wo['config']['redis'] == 'Y') ? 'checked': '';?>>
+                                <label class="form-check-label" for="redis-enabled">Enabled</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="redis" id="redis-disabled" value="N" <?php echo ($wo['config']['redis'] == 'N') ? 'checked': '';?>>
+                                <label class="form-check-label" for="redis-disabled" class="m-l-20">Disabled</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label class="form-label">Redis Port</label>
+                                <input type="number" id="redis_port" name="redis_port" class="form-control" value="<?php echo $wo['config']['redis_port']?>">
+                            </div>
+                        </div>
+                        
+                        <input type="hidden" name="hash_id" value="<?php echo Wo_CreateSession();?>">
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- #END# Vertical Layout -->
+<script>
+$(function() {
+    var form_email_settings = $('form.email-settings');
+    form_email_settings.ajaxForm({
+        url: Wo_Ajax_Requests_File() + '?f=admin_setting&s=update_general_setting',
+        beforeSend: function() {
+            form_email_settings.find('button').text('Please wait..');
+        },
+        success: function(data) {
+            if (data.status == 200) {
+                form_email_settings.find('button').text('Save');
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                $('.email-settings-alert').html('<div class="alert alert-success"><i class="fa fa-check"></i> Settings updated successfully</div>');
+                setTimeout(function () {
+                    $('.email-settings-alert').empty();
+                }, 2000);
+            }
+        }
+    });
+});
+</script>

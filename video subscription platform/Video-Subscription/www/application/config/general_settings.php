@@ -1,0 +1,33 @@
+<?php
+defined("BASEPATH") OR exit("No direct script access allowed");
+$config["sitename"] = 'VideoPlay';
+$config["logo"] = '<span>Vide<i class="md  md-album"></i>Play</span>';
+$config["theme"] = 'default';
+$config["emailsite"] = "support@coffeetheme.com";
+$config["freeWebsite"] = FALSE;
+$config["comments_moderation"] = TRUE;
+$config["confirmation_inscription"] = FALSE;
+$config["maintenance"] = FALSE;
+$config["maintenance_message"] = "Maintenance message";
+$config["facebook"] = "https://www.facebook.com/coffeetheme/";
+$config["twitter"] = "https://twitter.com/coffeetheme";
+$config["google"] = "https://plus.google.com/b/113675398586774502189/113675398586774502189";
+$config["terms"] = "";
+$config["facebookPageName"] = "Coffee Theme";
+$config["facebookPageLink"] = "https://www.facebook.com/coffeetheme/";
+$config["clientId"] = "891249173125-bcgnpsn0vbgbs8q53uoi61jg2ua3qkf9.apps.googleusercontent.com";
+$config["clientSecret"] = "1bEeg6TUMPfhcJK7_EGDHtmL";
+$config["facebook_app_id"] = "1349165995196959";
+$config["facebook_app_secret"] = "52febcccd75f4f1e757ae4d3d6de1f24";
+$config["consumerKey"] = "";
+$config["consumerSecret"] = "";
+$config["mailchimpApi"] = 'fa11ec31dc35fa13d03664cd62c9790b-us9';
+$config["mailchimpList"] = '0e1f1fba62';
+$config["amazonApiKey"] = 'AKIAIE5KL3EJBBDYFQZA';
+$config["amazonSecretKey"] = '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';
+$config["amazonRegion"] = 'us-east-1';
+$config["amazonBucket"] = 'nouveaubucket';
+$config["amazonCloudFront"] = 'd3pg7aw67nmiqp.cloudfront.net';
+$config["amazonBrowserUpload"] = '1';
+$config["hidePromo"] = TRUE;
+?>

@@ -1,0 +1,16 @@
+<tr class="setting-invitation" data-invitation="<?php echo $wo['invitation']['id']; ?>">
+  <td >
+     <?php echo Wo_Time_Elapsed_String($wo['invitation']['time']); ?>
+  </td>
+  <td>
+     <?php echo $wo['invitation']['code']; ?>
+  </td>
+  <td>
+     <?php if (!empty($wo['invitation']['user_name'])) { ?>
+        <a href="<?php echo($wo['invitation']['user_url']) ?>"><?php echo $wo['invitation']['user_name']; ?></a>
+      <?php } ?>
+  </td>
+  <td>
+     <button class="btn btn-danger waves-effect delete-admin-invitation" id="<?php echo $wo['invitation']['id']; ?>">DELETE</button>
+  </td>
+</tr>
